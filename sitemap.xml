@@ -2,13 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://7huahua.github.io/2022/11/my-secound-post/</loc>
-    <lastmod>2022-11-02T15:17:42+09:00</lastmod>
+    <loc>https://7huahua.github.io/2023/01/pandas%E5%92%8Cnumpy/</loc>
+    <lastmod>2023-01-05T15:01:37+09:00</lastmod>
   </url><url>
     <loc>https://7huahua.github.io/posts/</loc>
-    <lastmod>2022-11-02T15:17:42+09:00</lastmod>
+    <lastmod>2023-01-05T15:01:37+09:00</lastmod>
   </url><url>
     <loc>https://7huahua.github.io/</loc>
+    <lastmod>2023-01-05T15:01:37+09:00</lastmod>
+  </url><url>
+    <loc>https://7huahua.github.io/2023/01/%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%BF%976-nodejs%E5%92%8Cpuppeteer%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2023-01-05T14:14:27+09:00</lastmod>
+  </url><url>
+    <loc>https://7huahua.github.io/2022/11/linux-%E6%8C%87%E4%BB%A4%E5%AD%A6%E4%B9%A0/</loc>
     <lastmod>2022-11-02T15:17:42+09:00</lastmod>
   </url><url>
     <loc>https://7huahua.github.io/2022/10/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</loc>

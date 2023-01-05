@@ -10,7 +10,7 @@
   "headline": "Posts",
   
   "datePublished": "0001-01-01T00:00:00Z",
-  "dateModified": "2022-11-02T15:17:42+09:00",
+  "dateModified": "2023-01-05T15:01:37+09:00",
   "author": {
     "@type": "Person",
     "name": "Han Qiuhan",
@@ -259,9 +259,137 @@
     <div class="postShorten-header">
       <h1 class="postShorten-title">
       
-        <a class="link-unstyled" href="https://7huahua.github.io/2022/11/my-secound-post/" aria-label="打开帖子: My Secound Post">
+        <a class="link-unstyled" href="https://7huahua.github.io/2023/01/pandas%E5%92%8Cnumpy/" aria-label="打开帖子: Pandas和numpy">
       
-          My Secound Post
+          Pandas和numpy
+        </a>
+      </h1>
+      
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="2023-01-05T15:01:37&#43;09:00">
+        
+  一月 5, 2023
+
+      </time>
+    
+    
+  </div>
+
+    </div>
+    <div class="postShorten-excerpt">
+      
+        在做实验的过程中搜了不知道多少次numpy和pandas的一些操作，总是忘记。现在记录下来。
+pandas: csv-&gt;df,df-&gt;csv
+pd.read_csv(&rsquo;./name.csv&rsquo;) df.to_csv(&rsquo;./name.csv&rsquo;,header = None, index = None)
+numpy: array-&gt;csv numpy.savetxt(&rsquo;./name.csv&rsquo;,a = numpy.asarray([[1,2,3],[4,5,6]]),delimiter = &lsquo;,&rsquo;)
+pandas: string to datetime
+from datetime import datetime datetime_str = &lsquo;09/19/22 13:55:26&rsquo; datetime_object = datetime.strptime(datetime_str, &lsquo;%m/%d/%y %H:%M:%S&rsquo;)
+pandas:隔行相减 df[&lsquo;xx_1&rsquo;] = df[&lsquo;xx&rsquo;].shift(1) df[&lsquo;xx&rsquo;]-df[&lsquo;xx_1&rsquo;]
+pandas: groupby 相关
+sort_values([&lsquo;col_name&rsquo;],ascending = False) reset_index(drop = True) set_index()
+pandas:选择某一列非NAN的行 selected_rows = df[~df[&lsquo;col_name&rsquo;].isnull()]
+pandas:表join
+默认的join是根据index，如果不想根据index就要设定key #不保留index df.set_index(&lsquo;key&rsquo;).join(other.set_index(&lsquo;key&rsquo;)) #保留index df.join(other.set_index(&lsquo;key&rsquo;), on=&lsquo;key&rsquo;)
+pandas:绘制概率直方图 df.hist()
+pandas: 更改column name df.set_axis([&lsquo;col_name1&rsquo;,&lsquo;col_name2&rsquo;,&lsquo;col_name3&rsquo;], axis = 1)
+      
+      <p>
+        
+          <a href="https://7huahua.github.io/2023/01/pandas%E5%92%8Cnumpy/" class="postShorten-excerpt_link link" aria-label="打开帖子: Pandas和numpy">阅读全文</a>
+        
+        
+      </p>
+    </div>
+  </div>
+  
+</article>
+
+          
+            
+  
+    
+      
+        
+      
+    
+  
+
+
+  
+
+<article class="postShorten postShorten--thumbnailimg-bottom">
+  <div class="postShorten-wrap">
+    
+    <div class="postShorten-header">
+      <h1 class="postShorten-title">
+      
+        <a class="link-unstyled" href="https://7huahua.github.io/2023/01/%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%BF%976-nodejs%E5%92%8Cpuppeteer%E5%AD%A6%E4%B9%A0/" aria-label="打开帖子: 工作日志6 Nodejs和puppeteer学习">
+      
+          工作日志6 Nodejs和puppeteer学习
+        </a>
+      </h1>
+      
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="2023-01-05T14:14:27&#43;09:00">
+        
+  一月 5, 2023
+
+      </time>
+    
+    
+  </div>
+
+    </div>
+    <div class="postShorten-excerpt">
+      
+        这个项目本身使用Aurora Vision提供的api进行爬虫，但Aurora Vision更新了他们的api版本，并且需要申请额外服务，因此该项目只能从网页基于puppeteer进行爬虫。
+puppeteer是一个很容易上手的爬虫库，基本看quick start就能理解其是如何模拟人的一些操作来爬虫的。该项目的难点在于我不会java，也不会js，熟悉这些花费了很久的时间。
+node.js和puppeteer安装 先装npm，后装puppeteer，挺简单的
+node.js的调试
+console.log('this is test') 控制台输出
+node inspect xxx.js: 内置的检查器
+cont, c: 继续执行 next, n: 下一步 step, s: 进入 out, o: 走出去 pause：暂停运行代码（如开发者工具中的暂停按钮） 参考node.js 官方文档
+在vs中设置js的debug环境vs nodejs
+在vs中debug:在控制台输入noed xxx.js之后即可打开debug页面。 vs inline value: Open Settings Search for &ldquo;debug&rdquo; Navigate to Features &gt; Debug Change the setting for Debug: Inline Values
+另外还可以使用devtool等方法。我觉得还是vs最方便。
+node.js的一些迷惑语法 module exports: 模块化。 很多时候一个文件会被包装成一整个模块，直接对其debug是不会有反映的。要在别的test文件中导入，再逐行debug。 例如 #./scraper.js module.exports = {}
+#./test.js const test = require('.
+      
+      <p>
+        
+          <a href="https://7huahua.github.io/2023/01/%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%BF%976-nodejs%E5%92%8Cpuppeteer%E5%AD%A6%E4%B9%A0/" class="postShorten-excerpt_link link" aria-label="打开帖子: 工作日志6 Nodejs和puppeteer学习">阅读全文</a>
+        
+        
+      </p>
+    </div>
+  </div>
+  
+</article>
+
+          
+            
+  
+    
+      
+        
+      
+    
+  
+
+
+  
+
+<article class="postShorten postShorten--thumbnailimg-bottom">
+  <div class="postShorten-wrap">
+    
+    <div class="postShorten-header">
+      <h1 class="postShorten-title">
+      
+        <a class="link-unstyled" href="https://7huahua.github.io/2022/11/linux-%E6%8C%87%E4%BB%A4%E5%AD%A6%E4%B9%A0/" aria-label="打开帖子: Linux 指令学习">
+      
+          Linux 指令学习
         </a>
       </h1>
       
@@ -309,7 +437,7 @@ $?: Expands to the exit status of the most recently executed foreground pipeline
       
       <p>
         
-          <a href="https://7huahua.github.io/2022/11/my-secound-post/" class="postShorten-excerpt_link link" aria-label="打开帖子: My Secound Post">阅读全文</a>
+          <a href="https://7huahua.github.io/2022/11/linux-%E6%8C%87%E4%BB%A4%E5%AD%A6%E4%B9%A0/" class="postShorten-excerpt_link link" aria-label="打开帖子: Linux 指令学习">阅读全文</a>
         
         
       </p>
@@ -367,6 +495,9 @@ $?: Expands to the exit status of the most recently executed foreground pipeline
 问题3：github大小写识别问题 git改为可识别大小写 git config --get core.ignorecase git config core.ignorecase false github用户名在setting-account里直接改为小写 问题4：branch导致push不显示 据说这是由于github默认分支从master 改为main的缘故。那我已经push到master了，需要重命名。 参考: rename master to main
 Markdown教程：菜鸟教程Markdown
 Hugo快速入门：quick start
+搭建好之后新增加一篇博客 hugo new posts/xxx.md
+编辑xxx.md内容
+在blog文件夹下:hugo server -D, 进入local host：1313预览
       
       <p>
         

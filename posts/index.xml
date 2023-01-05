@@ -6,13 +6,55 @@
     <description>Recent content in Posts on 欢迎光临 恭喜发财</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 02 Nov 2022 15:17:42 +0900</lastBuildDate><atom:link href="https://7huahua.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 05 Jan 2023 15:01:37 +0900</lastBuildDate><atom:link href="https://7huahua.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>My Secound Post</title>
-      <link>https://7huahua.github.io/2022/11/my-secound-post/</link>
+      <title>Pandas和numpy</title>
+      <link>https://7huahua.github.io/2023/01/pandas%E5%92%8Cnumpy/</link>
+      <pubDate>Thu, 05 Jan 2023 15:01:37 +0900</pubDate>
+      
+      <guid>https://7huahua.github.io/2023/01/pandas%E5%92%8Cnumpy/</guid>
+      <description>在做实验的过程中搜了不知道多少次numpy和pandas的一些操作，总是忘记。现在记录下来。
+pandas: csv-&amp;gt;df,df-&amp;gt;csv
+pd.read_csv(&amp;rsquo;./name.csv&amp;rsquo;) df.to_csv(&amp;rsquo;./name.csv&amp;rsquo;,header = None, index = None)
+numpy: array-&amp;gt;csv numpy.savetxt(&amp;rsquo;./name.csv&amp;rsquo;,a = numpy.asarray([[1,2,3],[4,5,6]]),delimiter = &amp;lsquo;,&amp;rsquo;)
+pandas: string to datetime
+from datetime import datetime datetime_str = &amp;lsquo;09/19/22 13:55:26&amp;rsquo; datetime_object = datetime.strptime(datetime_str, &amp;lsquo;%m/%d/%y %H:%M:%S&amp;rsquo;)
+pandas:隔行相减 df[&amp;lsquo;xx_1&amp;rsquo;] = df[&amp;lsquo;xx&amp;rsquo;].shift(1) df[&amp;lsquo;xx&amp;rsquo;]-df[&amp;lsquo;xx_1&amp;rsquo;]
+pandas: groupby 相关
+sort_values([&amp;lsquo;col_name&amp;rsquo;],ascending = False) reset_index(drop = True) set_index()
+pandas:选择某一列非NAN的行 selected_rows = df[~df[&amp;lsquo;col_name&amp;rsquo;].isnull()]
+pandas:表join
+默认的join是根据index，如果不想根据index就要设定key #不保留index df.set_index(&amp;lsquo;key&amp;rsquo;).join(other.set_index(&amp;lsquo;key&amp;rsquo;)) #保留index df.join(other.set_index(&amp;lsquo;key&amp;rsquo;), on=&amp;lsquo;key&amp;rsquo;)
+pandas:绘制概率直方图 df.hist()
+pandas: 更改column name df.set_axis([&amp;lsquo;col_name1&amp;rsquo;,&amp;lsquo;col_name2&amp;rsquo;,&amp;lsquo;col_name3&amp;rsquo;], axis = 1)</description>
+    </item>
+    
+    <item>
+      <title>工作日志6 Nodejs和puppeteer学习</title>
+      <link>https://7huahua.github.io/2023/01/%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%BF%976-nodejs%E5%92%8Cpuppeteer%E5%AD%A6%E4%B9%A0/</link>
+      <pubDate>Thu, 05 Jan 2023 14:14:27 +0900</pubDate>
+      
+      <guid>https://7huahua.github.io/2023/01/%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%BF%976-nodejs%E5%92%8Cpuppeteer%E5%AD%A6%E4%B9%A0/</guid>
+      <description>这个项目本身使用Aurora Vision提供的api进行爬虫，但Aurora Vision更新了他们的api版本，并且需要申请额外服务，因此该项目只能从网页基于puppeteer进行爬虫。
+puppeteer是一个很容易上手的爬虫库，基本看quick start就能理解其是如何模拟人的一些操作来爬虫的。该项目的难点在于我不会java，也不会js，熟悉这些花费了很久的时间。
+node.js和puppeteer安装 先装npm，后装puppeteer，挺简单的
+node.js的调试
+console.log(&#39;this is test&#39;) 控制台输出
+node inspect xxx.js: 内置的检查器
+cont, c: 继续执行 next, n: 下一步 step, s: 进入 out, o: 走出去 pause：暂停运行代码（如开发者工具中的暂停按钮） 参考node.js 官方文档
+在vs中设置js的debug环境vs nodejs
+在vs中debug:在控制台输入noed xxx.js之后即可打开debug页面。 vs inline value: Open Settings Search for &amp;ldquo;debug&amp;rdquo; Navigate to Features &amp;gt; Debug Change the setting for Debug: Inline Values
+另外还可以使用devtool等方法。我觉得还是vs最方便。
+node.js的一些迷惑语法 module exports: 模块化。 很多时候一个文件会被包装成一整个模块，直接对其debug是不会有反映的。要在别的test文件中导入，再逐行debug。 例如 #./scraper.js module.exports = {}
+#./test.js const test = require(&#39;.</description>
+    </item>
+    
+    <item>
+      <title>Linux 指令学习</title>
+      <link>https://7huahua.github.io/2022/11/linux-%E6%8C%87%E4%BB%A4%E5%AD%A6%E4%B9%A0/</link>
       <pubDate>Wed, 02 Nov 2022 15:17:42 +0900</pubDate>
       
-      <guid>https://7huahua.github.io/2022/11/my-secound-post/</guid>
+      <guid>https://7huahua.github.io/2022/11/linux-%E6%8C%87%E4%BB%A4%E5%AD%A6%E4%B9%A0/</guid>
       <description>Linux 指令学习 最近实习终于派给我了可以学到东西的活，在sxp的鼓励下开始学习指令。再次谢谢她！
 密钥登陆 ssh -i [privatekey] username@ip_address 使用ssh密钥登陆
 密钥上传下载 scp -i [privatekey] -r username@ip_address:remote_dictionary ./local_dictionary/ 使用ssh复制文件夹到本地
@@ -57,7 +99,10 @@ $?: Expands to the exit status of the most recently executed foreground pipeline
 问题2：ssh报错 The authenticity of host &amp;#39;github.com (20.27.177.113)&amp;#39; can&amp;#39;t be established. 需要按照这里设定github私钥:hugo-build-blog
 问题3：github大小写识别问题 git改为可识别大小写 git config --get core.ignorecase git config core.ignorecase false github用户名在setting-account里直接改为小写 问题4：branch导致push不显示 据说这是由于github默认分支从master 改为main的缘故。那我已经push到master了，需要重命名。 参考: rename master to main
 Markdown教程：菜鸟教程Markdown
-Hugo快速入门：quick start</description>
+Hugo快速入门：quick start
+搭建好之后新增加一篇博客 hugo new posts/xxx.md
+编辑xxx.md内容
+在blog文件夹下:hugo server -D, 进入local host：1313预览</description>
     </item>
     
   </channel>
