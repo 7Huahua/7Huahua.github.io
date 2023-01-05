@@ -10,7 +10,7 @@
   "headline": "Posts",
   
   "datePublished": "0001-01-01T00:00:00Z",
-  "dateModified": "2022-10-06T16:03:01+09:00",
+  "dateModified": "2022-11-02T15:17:42+09:00",
   "author": {
     "@type": "Person",
     "name": "Han Qiuhan",
@@ -259,6 +259,84 @@
     <div class="postShorten-header">
       <h1 class="postShorten-title">
       
+        <a class="link-unstyled" href="https://7huahua.github.io/2022/11/my-secound-post/" aria-label="打开帖子: My Secound Post">
+      
+          My Secound Post
+        </a>
+      </h1>
+      
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="2022-11-02T15:17:42&#43;09:00">
+        
+  十一月 2, 2022
+
+      </time>
+    
+    
+  </div>
+
+    </div>
+    <div class="postShorten-excerpt">
+      
+        Linux 指令学习 最近实习终于派给我了可以学到东西的活，在sxp的鼓励下开始学习指令。再次谢谢她！
+密钥登陆 ssh -i [privatekey] username@ip_address 使用ssh密钥登陆
+密钥上传下载 scp -i [privatekey] -r username@ip_address:remote_dictionary ./local_dictionary/ 使用ssh复制文件夹到本地
+scp -i [privatekey] username@ip_address:remote_dictionary/file ./local_dictionary/ 使用ssh复制文件到本地
+交换后面两个参数则是上传
+crontab 我理解的crontab是一种类似heroku scheduler的定时运行某条指令的文件。该文件包含cron(8)守护进程的指令。可以自定义时间，指令，用户。
+例如：
+2,7,12,17,22,27,32,37,42,47,52,57 5-19 * * * /home/solarkun/jishakanshi_sh/controlCompcs.sh MONITOR 1 表示每天5~19点的2分，7分，&hellip;，57分，运行一遍后面的指令。
+crontab的设置cron 配置指南
+crontab指令 ： crontab -l
+crontab -e
+grep
+source
+sh文件
+linux脚本类型。sh是linux中运行shell的命令，是shell的解释器。shell脚本是linux中shell与命令行界面，用户可以在shell脚本输入命令来执行各种各样的任务。
+执行sh文件： ./xxx.sh
+或：sh xxx.sh
+sh文件有时会遇到权限问题。chmod命令可以更改权限。
+chmod 744 filename 在这里，每个数字代表允许的权限的总和：
+4赋予读取权限
+2赋予写权限
+1赋予执行权限
+0没有权限
+参考链接： chmod参数
+$ 是什么 读项目sh源码总会碰到$美元符号搭配各种各样数字字母，初学者实在很难理解。总结如下。
+$+var_name: 引用变量值
+$?: Expands to the exit status of the most recently executed foreground pipeline.
+      
+      <p>
+        
+          <a href="https://7huahua.github.io/2022/11/my-secound-post/" class="postShorten-excerpt_link link" aria-label="打开帖子: My Secound Post">阅读全文</a>
+        
+        
+      </p>
+    </div>
+  </div>
+  
+</article>
+
+          
+            
+  
+    
+      
+        
+      
+    
+  
+
+
+  
+
+<article class="postShorten postShorten--thumbnailimg-bottom">
+  <div class="postShorten-wrap">
+    
+    <div class="postShorten-header">
+      <h1 class="postShorten-title">
+      
         <a class="link-unstyled" href="https://7huahua.github.io/2022/10/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" aria-label="打开帖子: 第一篇博客">
       
           第一篇博客
@@ -307,7 +385,7 @@ Hugo快速入门：quick start
         </section>
         <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2022 Han Qiuhan. All Rights Reserved
+    &copy; 2023 Han Qiuhan. All Rights Reserved
   </span>
 </footer>
 
