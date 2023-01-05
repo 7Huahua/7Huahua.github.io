@@ -6,7 +6,20 @@
     <description>Recent content on 欢迎光临 恭喜发财</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 05 Jan 2023 15:01:37 +0900</lastBuildDate><atom:link href="https://7huahua.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 05 Jan 2023 15:49:13 +0900</lastBuildDate><atom:link href="https://7huahua.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Word2vec相关</title>
+      <link>https://7huahua.github.io/2023/01/word2vec%E7%9B%B8%E5%85%B3/</link>
+      <pubDate>Thu, 05 Jan 2023 15:49:13 +0900</pubDate>
+      
+      <guid>https://7huahua.github.io/2023/01/word2vec%E7%9B%B8%E5%85%B3/</guid>
+      <description>目前的实验需要word2vec进行embedding，这里记录下过程。
+安装gensim 这里的坑是gensim的版本更新很快，第一次安装可以最新版。但使用老版本存储后的model不能用新版导入，而新版的语法和老版有可能不兼容。
+pip install --upgrade gensim pip install gensim==4.0.0 导入并使用 from gensim.models import Word2Vec model = Word2Vec(sentences=cropus, vector_size=100, window=5, min_count=1, workers=4) model.save(&amp;quot;word2vec.model&amp;quot;) 获取cropus word2vec格式：list of lists
+对于GPS时间序列来说： [ [p0,p1,p2], [p1,p2], &amp;hellip; [p10,p11,p12,p13] ]
+训练及读取模型 model = Word2Vec(content,vector_size=250,window=5,min_count=0) model.save(&#39;./word2vec.model&#39;) model = Word2Vec.load(&#39;word2vec.model&#39;) 获取每个poi的embedding model.wv(str[poi_number]) 更改colab工作路径 os.chdir(path) </description>
+    </item>
+    
     <item>
       <title>Pandas和numpy</title>
       <link>https://7huahua.github.io/2023/01/pandas%E5%92%8Cnumpy/</link>
@@ -14,19 +27,7 @@
       
       <guid>https://7huahua.github.io/2023/01/pandas%E5%92%8Cnumpy/</guid>
       <description>在做实验的过程中搜了不知道多少次numpy和pandas的一些操作，总是忘记。现在记录下来。
-pandas: csv-&amp;gt;df,df-&amp;gt;csv
-pd.read_csv(&amp;rsquo;./name.csv&amp;rsquo;) df.to_csv(&amp;rsquo;./name.csv&amp;rsquo;,header = None, index = None)
-numpy: array-&amp;gt;csv numpy.savetxt(&amp;rsquo;./name.csv&amp;rsquo;,a = numpy.asarray([[1,2,3],[4,5,6]]),delimiter = &amp;lsquo;,&amp;rsquo;)
-pandas: string to datetime
-from datetime import datetime datetime_str = &amp;lsquo;09/19/22 13:55:26&amp;rsquo; datetime_object = datetime.strptime(datetime_str, &amp;lsquo;%m/%d/%y %H:%M:%S&amp;rsquo;)
-pandas:隔行相减 df[&amp;lsquo;xx_1&amp;rsquo;] = df[&amp;lsquo;xx&amp;rsquo;].shift(1) df[&amp;lsquo;xx&amp;rsquo;]-df[&amp;lsquo;xx_1&amp;rsquo;]
-pandas: groupby 相关
-sort_values([&amp;lsquo;col_name&amp;rsquo;],ascending = False) reset_index(drop = True) set_index()
-pandas:选择某一列非NAN的行 selected_rows = df[~df[&amp;lsquo;col_name&amp;rsquo;].isnull()]
-pandas:表join
-默认的join是根据index，如果不想根据index就要设定key #不保留index df.set_index(&amp;lsquo;key&amp;rsquo;).join(other.set_index(&amp;lsquo;key&amp;rsquo;)) #保留index df.join(other.set_index(&amp;lsquo;key&amp;rsquo;), on=&amp;lsquo;key&amp;rsquo;)
-pandas:绘制概率直方图 df.hist()
-pandas: 更改column name df.set_axis([&amp;lsquo;col_name1&amp;rsquo;,&amp;lsquo;col_name2&amp;rsquo;,&amp;lsquo;col_name3&amp;rsquo;], axis = 1)</description>
+pandas: csv-&amp;gt;df,df-&amp;gt;csv pd.read_csv(&#39;./name.csv&#39;) df.to_csv(&#39;./name.csv&#39;,header = None, index = None) numpy: array-&amp;gt;csv numpy.savetxt(&#39;./name.csv&#39;,a = numpy.asarray([[1,2,3],[4,5,6]]),delimiter = &#39;,&#39;) pandas: string to datetime from datetime import datetime datetime_str = &#39;09/19/22 13:55:26&#39; datetime_object = datetime.strptime(datetime_str, &#39;%m/%d/%y %H:%M:%S&#39;) pandas:隔行相减 df[&#39;xx_1&#39;] = df[&#39;xx&#39;].shift(1) df[&#39;xx&#39;]-df[&#39;xx_1&#39;] pandas: groupby 相关 sort_values([&#39;col_name&#39;],ascending = False) reset_index(drop = True) set_index() pandas:选择某一列非NAN的行 selected_rows = df[~df[&#39;col_name&#39;].isnull()] pandas:表join 默认的join是根据index，如果不想根据index就要设定key #不保留index df.set_index(&#39;key&#39;).join(other.set_index(&#39;key&#39;)) #保留index df.join(other.set_index(&#39;key&#39;), on=&#39;key&#39;) pandas:绘制概率直方图 df.hist() pandas: 更改column name df.set_axis([&#39;col_name1&#39;,&#39;col_name2&#39;,&#39;col_name3&#39;], axis = 1) </description>
     </item>
     
     <item>
@@ -38,15 +39,38 @@ pandas: 更改column name df.set_axis([&amp;lsquo;col_name1&amp;rsquo;,&amp;lsqu
       <description>这个项目本身使用Aurora Vision提供的api进行爬虫，但Aurora Vision更新了他们的api版本，并且需要申请额外服务，因此该项目只能从网页基于puppeteer进行爬虫。
 puppeteer是一个很容易上手的爬虫库，基本看quick start就能理解其是如何模拟人的一些操作来爬虫的。该项目的难点在于我不会java，也不会js，熟悉这些花费了很久的时间。
 node.js和puppeteer安装 先装npm，后装puppeteer，挺简单的
-node.js的调试
-console.log(&#39;this is test&#39;) 控制台输出
+node.js的调试 console.log(&#39;this is test&#39;) 控制台输出
 node inspect xxx.js: 内置的检查器
 cont, c: 继续执行 next, n: 下一步 step, s: 进入 out, o: 走出去 pause：暂停运行代码（如开发者工具中的暂停按钮） 参考node.js 官方文档
 在vs中设置js的debug环境vs nodejs
+youtube视频教程Getting started with Node.js debugging in VS Code
 在vs中debug:在控制台输入noed xxx.js之后即可打开debug页面。 vs inline value: Open Settings Search for &amp;ldquo;debug&amp;rdquo; Navigate to Features &amp;gt; Debug Change the setting for Debug: Inline Values
 另外还可以使用devtool等方法。我觉得还是vs最方便。
-node.js的一些迷惑语法 module exports: 模块化。 很多时候一个文件会被包装成一整个模块，直接对其debug是不会有反映的。要在别的test文件中导入，再逐行debug。 例如 #./scraper.js module.exports = {}
-#./test.js const test = require(&#39;.</description>
+node.js的一些迷惑语法 module exports: 模块化。 很多时候一个文件会被包装成一整个模块，直接对其debug是不会有反映的。要在别的test文件中导入，再逐行debug。 例如 #.</description>
+    </item>
+    
+    <item>
+      <title>工作日志5 Ruby_on_rails学习</title>
+      <link>https://7huahua.github.io/2023/01/%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%BF%975-ruby_on_rails%E5%AD%A6%E4%B9%A0/</link>
+      <pubDate>Thu, 05 Jan 2023 14:13:51 +0900</pubDate>
+      
+      <guid>https://7huahua.github.io/2023/01/%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%BF%975-ruby_on_rails%E5%AD%A6%E4%B9%A0/</guid>
+      <description>这个工作内容是更改检测系统的web端，增加一个更改某个特定表的功能。主要使用ruby on rails。
+ruby on rails quick start 官方入门教程rais入门
+总的来说，rails是一个web框架，最重要的三个模块是controller routes view
+controller控制着view的生成。
+view中使用的方法，以及view的名称，都应该在contoller中定义。
+view也就是page，包含每个页面的html文件。view下每个page的路径即为其的URL导航。这些导航也可以在routes中更改。
+总之搞不明白了就再把官方文档看一遍。
+model rails中类似java和python的class即为model。model之间可以有属于、包含、一对多多对多的关系。
+限定条件取得数据 参考这个连接（rbr写博客真的很详细）qiita rails 语法
+where model.where(colname:&amp;lsquo;value&amp;rsquo;) model.where.not(colname:&amp;lsquo;value&amp;rsquo;) model.where(colname1:&amp;lsquo;value1&amp;rsquo;).or(colname2:&amp;lsquo;value2&amp;rsquo;)
+first and last model.first(n) model.last(n)
+select model.select(:colname) model.select(&amp;lsquo;colname&amp;rsquo;)
+order model.order(&amp;rsquo;name ASC&amp;rsquo;) model.order(name::desc)
+limit model.limit(n)
+get all column names model.column_names
+ruby 语法 num to str ‘ABC’ + 12.to_s get var value &amp;quot;@post_#{id}&amp;quot; eval:执行字符串代表的语句 a = nil eval(&#39;a = RUBY_RELEASE_DATE&#39;) p a #=&amp;gt; &amp;quot;2007-03-13&amp;quot; 迭代：each_with_index/each [5, 10, 15].</description>
     </item>
     
     <item>

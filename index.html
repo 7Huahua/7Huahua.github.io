@@ -243,6 +243,62 @@
     <div class="postShorten-header">
       <h1 class="postShorten-title">
       
+        <a class="link-unstyled" href="https://7huahua.github.io/2023/01/word2vec%E7%9B%B8%E5%85%B3/" aria-label="打开帖子: Word2vec相关">
+      
+          Word2vec相关
+        </a>
+      </h1>
+      
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="2023-01-05T15:49:13&#43;09:00">
+        
+  一月 5, 2023
+
+      </time>
+    
+    
+  </div>
+
+    </div>
+    <div class="postShorten-excerpt">
+      
+        目前的实验需要word2vec进行embedding，这里记录下过程。
+安装gensim 这里的坑是gensim的版本更新很快，第一次安装可以最新版。但使用老版本存储后的model不能用新版导入，而新版的语法和老版有可能不兼容。
+pip install --upgrade gensim pip install gensim==4.0.0 导入并使用 from gensim.models import Word2Vec model = Word2Vec(sentences=cropus, vector_size=100, window=5, min_count=1, workers=4) model.save(&quot;word2vec.model&quot;) 获取cropus word2vec格式：list of lists
+对于GPS时间序列来说： [ [p0,p1,p2], [p1,p2], &hellip; [p10,p11,p12,p13] ]
+训练及读取模型 model = Word2Vec(content,vector_size=250,window=5,min_count=0) model.save('./word2vec.model') model = Word2Vec.load('word2vec.model') 获取每个poi的embedding model.wv(str[poi_number]) 更改colab工作路径 os.chdir(path) 
+      
+      <p>
+        
+          <a href="https://7huahua.github.io/2023/01/word2vec%E7%9B%B8%E5%85%B3/" class="postShorten-excerpt_link link" aria-label="打开帖子: Word2vec相关">阅读全文</a>
+        
+        
+      </p>
+    </div>
+  </div>
+  
+</article>
+
+          
+            
+  
+    
+      
+        
+      
+    
+  
+
+
+  
+
+<article class="postShorten postShorten--thumbnailimg-bottom">
+  <div class="postShorten-wrap">
+    
+    <div class="postShorten-header">
+      <h1 class="postShorten-title">
+      
         <a class="link-unstyled" href="https://7huahua.github.io/2023/01/pandas%E5%92%8Cnumpy/" aria-label="打开帖子: Pandas和numpy">
       
           Pandas和numpy
@@ -264,19 +320,7 @@
     <div class="postShorten-excerpt">
       
         在做实验的过程中搜了不知道多少次numpy和pandas的一些操作，总是忘记。现在记录下来。
-pandas: csv-&gt;df,df-&gt;csv
-pd.read_csv(&rsquo;./name.csv&rsquo;) df.to_csv(&rsquo;./name.csv&rsquo;,header = None, index = None)
-numpy: array-&gt;csv numpy.savetxt(&rsquo;./name.csv&rsquo;,a = numpy.asarray([[1,2,3],[4,5,6]]),delimiter = &lsquo;,&rsquo;)
-pandas: string to datetime
-from datetime import datetime datetime_str = &lsquo;09/19/22 13:55:26&rsquo; datetime_object = datetime.strptime(datetime_str, &lsquo;%m/%d/%y %H:%M:%S&rsquo;)
-pandas:隔行相减 df[&lsquo;xx_1&rsquo;] = df[&lsquo;xx&rsquo;].shift(1) df[&lsquo;xx&rsquo;]-df[&lsquo;xx_1&rsquo;]
-pandas: groupby 相关
-sort_values([&lsquo;col_name&rsquo;],ascending = False) reset_index(drop = True) set_index()
-pandas:选择某一列非NAN的行 selected_rows = df[~df[&lsquo;col_name&rsquo;].isnull()]
-pandas:表join
-默认的join是根据index，如果不想根据index就要设定key #不保留index df.set_index(&lsquo;key&rsquo;).join(other.set_index(&lsquo;key&rsquo;)) #保留index df.join(other.set_index(&lsquo;key&rsquo;), on=&lsquo;key&rsquo;)
-pandas:绘制概率直方图 df.hist()
-pandas: 更改column name df.set_axis([&lsquo;col_name1&rsquo;,&lsquo;col_name2&rsquo;,&lsquo;col_name3&rsquo;], axis = 1)
+pandas: csv-&gt;df,df-&gt;csv pd.read_csv('./name.csv') df.to_csv('./name.csv',header = None, index = None) numpy: array-&gt;csv numpy.savetxt('./name.csv',a = numpy.asarray([[1,2,3],[4,5,6]]),delimiter = ',') pandas: string to datetime from datetime import datetime datetime_str = '09/19/22 13:55:26' datetime_object = datetime.strptime(datetime_str, '%m/%d/%y %H:%M:%S') pandas:隔行相减 df['xx_1'] = df['xx'].shift(1) df['xx']-df['xx_1'] pandas: groupby 相关 sort_values(['col_name'],ascending = False) reset_index(drop = True) set_index() pandas:选择某一列非NAN的行 selected_rows = df[~df['col_name'].isnull()] pandas:表join 默认的join是根据index，如果不想根据index就要设定key #不保留index df.set_index('key').join(other.set_index('key')) #保留index df.join(other.set_index('key'), on='key') pandas:绘制概率直方图 df.hist() pandas: 更改column name df.set_axis(['col_name1','col_name2','col_name3'], axis = 1) 
       
       <p>
         
@@ -331,19 +375,85 @@ pandas: 更改column name df.set_axis([&lsquo;col_name1&rsquo;,&lsquo;col_name2&
         这个项目本身使用Aurora Vision提供的api进行爬虫，但Aurora Vision更新了他们的api版本，并且需要申请额外服务，因此该项目只能从网页基于puppeteer进行爬虫。
 puppeteer是一个很容易上手的爬虫库，基本看quick start就能理解其是如何模拟人的一些操作来爬虫的。该项目的难点在于我不会java，也不会js，熟悉这些花费了很久的时间。
 node.js和puppeteer安装 先装npm，后装puppeteer，挺简单的
-node.js的调试
-console.log('this is test') 控制台输出
+node.js的调试 console.log('this is test') 控制台输出
 node inspect xxx.js: 内置的检查器
 cont, c: 继续执行 next, n: 下一步 step, s: 进入 out, o: 走出去 pause：暂停运行代码（如开发者工具中的暂停按钮） 参考node.js 官方文档
 在vs中设置js的debug环境vs nodejs
+youtube视频教程Getting started with Node.js debugging in VS Code
 在vs中debug:在控制台输入noed xxx.js之后即可打开debug页面。 vs inline value: Open Settings Search for &ldquo;debug&rdquo; Navigate to Features &gt; Debug Change the setting for Debug: Inline Values
 另外还可以使用devtool等方法。我觉得还是vs最方便。
-node.js的一些迷惑语法 module exports: 模块化。 很多时候一个文件会被包装成一整个模块，直接对其debug是不会有反映的。要在别的test文件中导入，再逐行debug。 例如 #./scraper.js module.exports = {}
-#./test.js const test = require('.
+node.js的一些迷惑语法 module exports: 模块化。 很多时候一个文件会被包装成一整个模块，直接对其debug是不会有反映的。要在别的test文件中导入，再逐行debug。 例如 #.
       
       <p>
         
           <a href="https://7huahua.github.io/2023/01/%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%BF%976-nodejs%E5%92%8Cpuppeteer%E5%AD%A6%E4%B9%A0/" class="postShorten-excerpt_link link" aria-label="打开帖子: 工作日志6 Nodejs和puppeteer学习">阅读全文</a>
+        
+        
+      </p>
+    </div>
+  </div>
+  
+</article>
+
+          
+            
+  
+    
+      
+        
+      
+    
+  
+
+
+  
+
+<article class="postShorten postShorten--thumbnailimg-bottom">
+  <div class="postShorten-wrap">
+    
+    <div class="postShorten-header">
+      <h1 class="postShorten-title">
+      
+        <a class="link-unstyled" href="https://7huahua.github.io/2023/01/%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%BF%975-ruby_on_rails%E5%AD%A6%E4%B9%A0/" aria-label="打开帖子: 工作日志5 Ruby_on_rails学习">
+      
+          工作日志5 Ruby_on_rails学习
+        </a>
+      </h1>
+      
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="2023-01-05T14:13:51&#43;09:00">
+        
+  一月 5, 2023
+
+      </time>
+    
+    
+  </div>
+
+    </div>
+    <div class="postShorten-excerpt">
+      
+        这个工作内容是更改检测系统的web端，增加一个更改某个特定表的功能。主要使用ruby on rails。
+ruby on rails quick start 官方入门教程rais入门
+总的来说，rails是一个web框架，最重要的三个模块是controller routes view
+controller控制着view的生成。
+view中使用的方法，以及view的名称，都应该在contoller中定义。
+view也就是page，包含每个页面的html文件。view下每个page的路径即为其的URL导航。这些导航也可以在routes中更改。
+总之搞不明白了就再把官方文档看一遍。
+model rails中类似java和python的class即为model。model之间可以有属于、包含、一对多多对多的关系。
+限定条件取得数据 参考这个连接（rbr写博客真的很详细）qiita rails 语法
+where model.where(colname:&lsquo;value&rsquo;) model.where.not(colname:&lsquo;value&rsquo;) model.where(colname1:&lsquo;value1&rsquo;).or(colname2:&lsquo;value2&rsquo;)
+first and last model.first(n) model.last(n)
+select model.select(:colname) model.select(&lsquo;colname&rsquo;)
+order model.order(&rsquo;name ASC&rsquo;) model.order(name::desc)
+limit model.limit(n)
+get all column names model.column_names
+ruby 语法 num to str ‘ABC’ + 12.to_s get var value &quot;@post_#{id}&quot; eval:执行字符串代表的语句 a = nil eval('a = RUBY_RELEASE_DATE') p a #=&gt; &quot;2007-03-13&quot; 迭代：each_with_index/each [5, 10, 15].
+      
+      <p>
+        
+          <a href="https://7huahua.github.io/2023/01/%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%BF%975-ruby_on_rails%E5%AD%A6%E4%B9%A0/" class="postShorten-excerpt_link link" aria-label="打开帖子: 工作日志5 Ruby_on_rails学习">阅读全文</a>
         
         
       </p>

@@ -7,10 +7,10 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "Pandas和numpy",
+  "headline": "Word2vec相关",
   
-  "datePublished": "2023-01-05T15:01:37+09:00",
-  "dateModified": "2023-01-05T15:01:37+09:00",
+  "datePublished": "2023-01-05T15:49:13+09:00",
+  "dateModified": "2023-01-05T15:49:13+09:00",
   "author": {
     "@type": "Person",
     "name": "Han Qiuhan",
@@ -20,7 +20,7 @@
   },
   "mainEntityOfPage": { 
     "@type": "WebPage",
-    "@id": "https:\/\/7huahua.github.io\/2023\/01\/pandas%E5%92%8Cnumpy\/" 
+    "@id": "https:\/\/7huahua.github.io\/2023\/01\/word2vec%E7%9B%B8%E5%85%B3\/" 
   },
   "publisher": {
     "@type": "Organization",
@@ -32,7 +32,7 @@
     }
     
   },
-  "description": "在做实验的过程中搜了不知道多少次numpy和pandas的一些操作，总是忘记。现在记录下来。\npandas: csv-\u0026gt;df,df-\u0026gt;csv pd.read_csv('./name.csv') df.to_csv('./name.csv',header = None, index = None) numpy: array-\u0026gt;csv numpy.savetxt('./name.csv',a = numpy.asarray([[1,2,3],[4,5,6]]),delimiter = ',') pandas: string to datetime from datetime import datetime datetime_str = '09/19/22 13:55:26' datetime_object = datetime.strptime(datetime_str, '%m/%d/%y %H:%M:%S') pandas:隔行相减 df['xx_1'] = df['xx'].shift(1) df['xx']-df['xx_1'] pandas: groupby 相关 sort_values(['col_name'],ascending = False) reset_index(drop = True) set_index() pandas:选择某一列非NAN的行 selected_rows = df[~df['col_name'].isnull()] pandas:表join 默认的join是根据index，如果不想根据index就要设定key #不保留index df.set_index('key').join(other.set_index('key')) #保留index df.join(other.set_index('key'), on='key') pandas:绘制概率直方图 df.hist() pandas: 更改column name df.set_axis(['col_name1','col_name2','col_name3'], axis = 1) ",
+  "description": "目前的实验需要word2vec进行embedding，这里记录下过程。\n安装gensim 这里的坑是gensim的版本更新很快，第一次安装可以最新版。但使用老版本存储后的model不能用新版导入，而新版的语法和老版有可能不兼容。\npip install --upgrade gensim pip install gensim==4.0.0 导入并使用 from gensim.models import Word2Vec model = Word2Vec(sentences=cropus, vector_size=100, window=5, min_count=1, workers=4) model.save(\u0026quot;word2vec.model\u0026quot;) 获取cropus word2vec格式：list of lists\n对于GPS时间序列来说： [ [p0,p1,p2], [p1,p2], \u0026hellip; [p10,p11,p12,p13] ]\n训练及读取模型 model = Word2Vec(content,vector_size=250,window=5,min_count=0) model.save('./word2vec.model') model = Word2Vec.load('word2vec.model') 获取每个poi的embedding model.wv(str[poi_number]) 更改colab工作路径 os.chdir(path) ",
   "keywords": []
 }
 
@@ -43,29 +43,41 @@
 <meta name="generator" content="Hugo 0.104.3 with theme Tranquilpeak 0.5.3-BETA">
 <meta name="author" content="Han Qiuhan">
 <meta name="keywords" content="">
-<meta name="description" content="在做实验的过程中搜了不知道多少次numpy和pandas的一些操作，总是忘记。现在记录下来。
-pandas: csv-&gt;df,df-&gt;csv pd.read_csv(&#39;./name.csv&#39;) df.to_csv(&#39;./name.csv&#39;,header = None, index = None) numpy: array-&gt;csv numpy.savetxt(&#39;./name.csv&#39;,a = numpy.asarray([[1,2,3],[4,5,6]]),delimiter = &#39;,&#39;) pandas: string to datetime from datetime import datetime datetime_str = &#39;09/19/22 13:55:26&#39; datetime_object = datetime.strptime(datetime_str, &#39;%m/%d/%y %H:%M:%S&#39;) pandas:隔行相减 df[&#39;xx_1&#39;] = df[&#39;xx&#39;].shift(1) df[&#39;xx&#39;]-df[&#39;xx_1&#39;] pandas: groupby 相关 sort_values([&#39;col_name&#39;],ascending = False) reset_index(drop = True) set_index() pandas:选择某一列非NAN的行 selected_rows = df[~df[&#39;col_name&#39;].isnull()] pandas:表join 默认的join是根据index，如果不想根据index就要设定key #不保留index df.set_index(&#39;key&#39;).join(other.set_index(&#39;key&#39;)) #保留index df.join(other.set_index(&#39;key&#39;), on=&#39;key&#39;) pandas:绘制概率直方图 df.hist() pandas: 更改column name df.set_axis([&#39;col_name1&#39;,&#39;col_name2&#39;,&#39;col_name3&#39;], axis = 1) ">
+<meta name="description" content="目前的实验需要word2vec进行embedding，这里记录下过程。
+安装gensim 这里的坑是gensim的版本更新很快，第一次安装可以最新版。但使用老版本存储后的model不能用新版导入，而新版的语法和老版有可能不兼容。
+pip install --upgrade gensim pip install gensim==4.0.0 导入并使用 from gensim.models import Word2Vec model = Word2Vec(sentences=cropus, vector_size=100, window=5, min_count=1, workers=4) model.save(&quot;word2vec.model&quot;) 获取cropus word2vec格式：list of lists
+对于GPS时间序列来说： [ [p0,p1,p2], [p1,p2], &hellip; [p10,p11,p12,p13] ]
+训练及读取模型 model = Word2Vec(content,vector_size=250,window=5,min_count=0) model.save(&#39;./word2vec.model&#39;) model = Word2Vec.load(&#39;word2vec.model&#39;) 获取每个poi的embedding model.wv(str[poi_number]) 更改colab工作路径 os.chdir(path) ">
 
 
-<meta property="og:description" content="在做实验的过程中搜了不知道多少次numpy和pandas的一些操作，总是忘记。现在记录下来。
-pandas: csv-&gt;df,df-&gt;csv pd.read_csv(&#39;./name.csv&#39;) df.to_csv(&#39;./name.csv&#39;,header = None, index = None) numpy: array-&gt;csv numpy.savetxt(&#39;./name.csv&#39;,a = numpy.asarray([[1,2,3],[4,5,6]]),delimiter = &#39;,&#39;) pandas: string to datetime from datetime import datetime datetime_str = &#39;09/19/22 13:55:26&#39; datetime_object = datetime.strptime(datetime_str, &#39;%m/%d/%y %H:%M:%S&#39;) pandas:隔行相减 df[&#39;xx_1&#39;] = df[&#39;xx&#39;].shift(1) df[&#39;xx&#39;]-df[&#39;xx_1&#39;] pandas: groupby 相关 sort_values([&#39;col_name&#39;],ascending = False) reset_index(drop = True) set_index() pandas:选择某一列非NAN的行 selected_rows = df[~df[&#39;col_name&#39;].isnull()] pandas:表join 默认的join是根据index，如果不想根据index就要设定key #不保留index df.set_index(&#39;key&#39;).join(other.set_index(&#39;key&#39;)) #保留index df.join(other.set_index(&#39;key&#39;), on=&#39;key&#39;) pandas:绘制概率直方图 df.hist() pandas: 更改column name df.set_axis([&#39;col_name1&#39;,&#39;col_name2&#39;,&#39;col_name3&#39;], axis = 1) ">
+<meta property="og:description" content="目前的实验需要word2vec进行embedding，这里记录下过程。
+安装gensim 这里的坑是gensim的版本更新很快，第一次安装可以最新版。但使用老版本存储后的model不能用新版导入，而新版的语法和老版有可能不兼容。
+pip install --upgrade gensim pip install gensim==4.0.0 导入并使用 from gensim.models import Word2Vec model = Word2Vec(sentences=cropus, vector_size=100, window=5, min_count=1, workers=4) model.save(&quot;word2vec.model&quot;) 获取cropus word2vec格式：list of lists
+对于GPS时间序列来说： [ [p0,p1,p2], [p1,p2], &hellip; [p10,p11,p12,p13] ]
+训练及读取模型 model = Word2Vec(content,vector_size=250,window=5,min_count=0) model.save(&#39;./word2vec.model&#39;) model = Word2Vec.load(&#39;word2vec.model&#39;) 获取每个poi的embedding model.wv(str[poi_number]) 更改colab工作路径 os.chdir(path) ">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Pandas和numpy">
-<meta name="twitter:title" content="Pandas和numpy">
-<meta property="og:url" content="https://7huahua.github.io/2023/01/pandas%E5%92%8Cnumpy/">
-<meta property="twitter:url" content="https://7huahua.github.io/2023/01/pandas%E5%92%8Cnumpy/">
+<meta property="og:title" content="Word2vec相关">
+<meta name="twitter:title" content="Word2vec相关">
+<meta property="og:url" content="https://7huahua.github.io/2023/01/word2vec%E7%9B%B8%E5%85%B3/">
+<meta property="twitter:url" content="https://7huahua.github.io/2023/01/word2vec%E7%9B%B8%E5%85%B3/">
 <meta property="og:site_name" content="欢迎光临 恭喜发财">
-<meta property="og:description" content="在做实验的过程中搜了不知道多少次numpy和pandas的一些操作，总是忘记。现在记录下来。
-pandas: csv-&gt;df,df-&gt;csv pd.read_csv(&#39;./name.csv&#39;) df.to_csv(&#39;./name.csv&#39;,header = None, index = None) numpy: array-&gt;csv numpy.savetxt(&#39;./name.csv&#39;,a = numpy.asarray([[1,2,3],[4,5,6]]),delimiter = &#39;,&#39;) pandas: string to datetime from datetime import datetime datetime_str = &#39;09/19/22 13:55:26&#39; datetime_object = datetime.strptime(datetime_str, &#39;%m/%d/%y %H:%M:%S&#39;) pandas:隔行相减 df[&#39;xx_1&#39;] = df[&#39;xx&#39;].shift(1) df[&#39;xx&#39;]-df[&#39;xx_1&#39;] pandas: groupby 相关 sort_values([&#39;col_name&#39;],ascending = False) reset_index(drop = True) set_index() pandas:选择某一列非NAN的行 selected_rows = df[~df[&#39;col_name&#39;].isnull()] pandas:表join 默认的join是根据index，如果不想根据index就要设定key #不保留index df.set_index(&#39;key&#39;).join(other.set_index(&#39;key&#39;)) #保留index df.join(other.set_index(&#39;key&#39;), on=&#39;key&#39;) pandas:绘制概率直方图 df.hist() pandas: 更改column name df.set_axis([&#39;col_name1&#39;,&#39;col_name2&#39;,&#39;col_name3&#39;], axis = 1) ">
-<meta name="twitter:description" content="在做实验的过程中搜了不知道多少次numpy和pandas的一些操作，总是忘记。现在记录下来。
-pandas: csv-&gt;df,df-&gt;csv pd.read_csv(&#39;./name.csv&#39;) df.to_csv(&#39;./name.csv&#39;,header = None, index = None) numpy: array-&gt;csv numpy.savetxt(&#39;./name.csv&#39;,a = numpy.asarray([[1,2,3],[4,5,6]]),delimiter = &#39;,&#39;) pandas: string to datetime from datetime import datetime datetime_str = &#39;09/19/22 13:55:26&#39; datetime_object = datetime.strptime(datetime_str, &#39;%m/%d/%y %H:%M:%S&#39;) pandas:隔行相减 df[&#39;xx_1&#39;] = df[&#39;xx&#39;].shift(1) df[&#39;xx&#39;]-df[&#39;xx_1&#39;] pandas: groupby 相关 sort_values([&#39;col_name&#39;],ascending = False) reset_index(drop = True) set_index() pandas:选择某一列非NAN的行 selected_rows = df[~df[&#39;col_name&#39;].isnull()] pandas:表join 默认的join是根据index，如果不想根据index就要设定key #不保留index df.set_index(&#39;key&#39;).join(other.set_index(&#39;key&#39;)) #保留index df.join(other.set_index(&#39;key&#39;), on=&#39;key&#39;) pandas:绘制概率直方图 df.hist() pandas: 更改column name df.set_axis([&#39;col_name1&#39;,&#39;col_name2&#39;,&#39;col_name3&#39;], axis = 1) ">
+<meta property="og:description" content="目前的实验需要word2vec进行embedding，这里记录下过程。
+安装gensim 这里的坑是gensim的版本更新很快，第一次安装可以最新版。但使用老版本存储后的model不能用新版导入，而新版的语法和老版有可能不兼容。
+pip install --upgrade gensim pip install gensim==4.0.0 导入并使用 from gensim.models import Word2Vec model = Word2Vec(sentences=cropus, vector_size=100, window=5, min_count=1, workers=4) model.save(&quot;word2vec.model&quot;) 获取cropus word2vec格式：list of lists
+对于GPS时间序列来说： [ [p0,p1,p2], [p1,p2], &hellip; [p10,p11,p12,p13] ]
+训练及读取模型 model = Word2Vec(content,vector_size=250,window=5,min_count=0) model.save(&#39;./word2vec.model&#39;) model = Word2Vec.load(&#39;word2vec.model&#39;) 获取每个poi的embedding model.wv(str[poi_number]) 更改colab工作路径 os.chdir(path) ">
+<meta name="twitter:description" content="目前的实验需要word2vec进行embedding，这里记录下过程。
+安装gensim 这里的坑是gensim的版本更新很快，第一次安装可以最新版。但使用老版本存储后的model不能用新版导入，而新版的语法和老版有可能不兼容。
+pip install --upgrade gensim pip install gensim==4.0.0 导入并使用 from gensim.models import Word2Vec model = Word2Vec(sentences=cropus, vector_size=100, window=5, min_count=1, workers=4) model.save(&quot;word2vec.model&quot;) 获取cropus word2vec格式：list of lists
+对于GPS时间序列来说： [ [p0,p1,p2], [p1,p2], &hellip; [p10,p11,p12,p13] ]
+训练及读取模型 model = Word2Vec(content,vector_size=250,window=5,min_count=0) model.save(&#39;./word2vec.model&#39;) model = Word2Vec.load(&#39;word2vec.model&#39;) 获取每个poi的embedding model.wv(str[poi_number]) 更改colab工作路径 os.chdir(path) ">
 <meta property="og:locale" content="zh-cn">
 
   
-    <meta property="article:published_time" content="2023-01-05T15:01:37">
+    <meta property="article:published_time" content="2023-01-05T15:49:13">
   
   
-    <meta property="article:modified_time" content="2023-01-05T15:01:37">
+    <meta property="article:modified_time" content="2023-01-05T15:49:13">
   
   
   
@@ -88,14 +100,14 @@ pandas: csv-&gt;df,df-&gt;csv pd.read_csv(&#39;./name.csv&#39;) df.to_csv(&#39;.
 
 
 
-    <title>Pandas和numpy</title>
+    <title>Word2vec相关</title>
 
     <link rel="icon" href="https://7huahua.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://7huahua.github.io/2023/01/pandas%E5%92%8Cnumpy/">
+    <link rel="canonical" href="https://7huahua.github.io/2023/01/word2vec%E7%9B%B8%E5%85%B3/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -255,13 +267,13 @@ pandas: csv-&gt;df,df-&gt;csv pd.read_csv(&#39;./name.csv&#39;) df.to_csv(&#39;.
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title">
-      Pandas和numpy
+      Word2vec相关
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time datetime="2023-01-05T15:01:37&#43;09:00">
+      <time datetime="2023-01-05T15:49:13&#43;09:00">
         
   一月 5, 2023
 
@@ -274,43 +286,38 @@ pandas: csv-&gt;df,df-&gt;csv pd.read_csv(&#39;./name.csv&#39;) df.to_csv(&#39;.
           
           <div class="post-content markdown">
             <div class="main-content-wrap">
-              <p>在做实验的过程中搜了不知道多少次numpy和pandas的一些操作，总是忘记。现在记录下来。</p>
-<h3 id="pandas-csv-dfdf-csv">pandas: csv-&gt;df,df-&gt;csv</h3>
-<pre><code>pd.read_csv('./name.csv')
-df.to_csv('./name.csv',header = None, index = None)
+              <p>目前的实验需要word2vec进行embedding，这里记录下过程。</p>
+<h3 id="安装gensim">安装gensim</h3>
+<p>这里的坑是gensim的版本更新很快，第一次安装可以最新版。但使用老版本存储后的model不能用新版导入，而新版的语法和老版有可能不兼容。</p>
+<pre><code>pip install --upgrade gensim
+
+pip install gensim==4.0.0
 </code></pre>
-<h3 id="numpy-array-csv">numpy: array-&gt;csv</h3>
-<pre><code>numpy.savetxt('./name.csv',a = numpy.asarray([[1,2,3],[4,5,6]]),delimiter = ',')
+<h3 id="导入并使用">导入并使用</h3>
+<pre><code>from gensim.models import Word2Vec
+model = Word2Vec(sentences=cropus, vector_size=100, window=5, min_count=1, workers=4)
+model.save(&quot;word2vec.model&quot;)
 </code></pre>
-<h3 id="pandas-string-to-datetime">pandas: string to datetime</h3>
-<pre><code>from datetime import datetime
-datetime_str = '09/19/22 13:55:26'
-datetime_object = datetime.strptime(datetime_str, '%m/%d/%y %H:%M:%S')
+<h3 id="获取cropus">获取cropus</h3>
+<p>word2vec格式：list of lists</p>
+<p>对于GPS时间序列来说：
+[
+[p0,p1,p2],
+[p1,p2],
+&hellip;
+[p10,p11,p12,p13]
+]</p>
+<h3 id="训练及读取模型">训练及读取模型</h3>
+<pre><code>model = Word2Vec(content,vector_size=250,window=5,min_count=0)
+model.save('./word2vec.model')
+model = Word2Vec.load('word2vec.model') 
 </code></pre>
-<h3 id="pandas隔行相减">pandas:隔行相减</h3>
-<pre><code>df['xx_1'] = df['xx'].shift(1)
-df['xx']-df['xx_1']
+<h3 id="获取每个poi的embedding">获取每个poi的embedding</h3>
+<pre><code>model.wv(str[poi_number])
 </code></pre>
-<h3 id="pandas-groupby-相关">pandas: groupby 相关</h3>
-<pre><code>sort_values(['col_name'],ascending = False)
-reset_index(drop = True)
-set_index()
+<h3 id="更改colab工作路径">更改colab工作路径</h3>
+<pre><code>os.chdir(path)
 </code></pre>
-<h3 id="pandas选择某一列非nan的行">pandas:选择某一列非NAN的行</h3>
-<pre><code>selected_rows = df[~df['col_name'].isnull()]
-</code></pre>
-<h3 id="pandas表join">pandas:表join</h3>
-<pre><code>默认的join是根据index，如果不想根据index就要设定key
-#不保留index
-df.set_index('key').join(other.set_index('key'))
-#保留index
-df.join(other.set_index('key'), on='key')
-</code></pre>
-<h3 id="pandas绘制概率直方图">pandas:绘制概率直方图</h3>
-<pre><code>df.hist()
-</code></pre>
-<h3 id="pandas-更改column-name">pandas: 更改column name</h3>
-<pre><code>df.set_axis(['col_name1','col_name2','col_name3'], axis = 1)</code></pre>
 
               
 
@@ -328,7 +335,7 @@ df.join(other.set_index('key'), on='key')
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://7huahua.github.io/2023/01/word2vec%E7%9B%B8%E5%85%B3/" data-tooltip="Word2vec相关" aria-label="下一篇: Word2vec相关">
+            <a class="post-action-btn btn btn--disabled">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
@@ -336,7 +343,7 @@ df.join(other.set_index('key'), on='key')
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://7huahua.github.io/2023/01/%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%BF%976-nodejs%E5%92%8Cpuppeteer%E5%AD%A6%E4%B9%A0/" data-tooltip="工作日志6 Nodejs和puppeteer学习" aria-label="上一篇: 工作日志6 Nodejs和puppeteer学习">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://7huahua.github.io/2023/01/pandas%E5%92%8Cnumpy/" data-tooltip="Pandas和numpy" aria-label="上一篇: Pandas和numpy">
           
               <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
               <i class="fa fa-angle-right"></i>
@@ -354,19 +361,19 @@ df.join(other.set_index('key'), on='key')
     </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://7huahua.github.io/2023/01/pandas%E5%92%8Cnumpy/" title="分享到 Facebook" aria-label="分享到 Facebook">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://7huahua.github.io/2023/01/word2vec%E7%9B%B8%E5%85%B3/" title="分享到 Facebook" aria-label="分享到 Facebook">
           <i class="fab fa-facebook-square" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://7huahua.github.io/2023/01/pandas%E5%92%8Cnumpy/" title="分享到 Twitter" aria-label="分享到 Twitter">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://7huahua.github.io/2023/01/word2vec%E7%9B%B8%E5%85%B3/" title="分享到 Twitter" aria-label="分享到 Twitter">
           <i class="fab fa-twitter" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://7huahua.github.io/2023/01/pandas%E5%92%8Cnumpy/" title="分享到 Linkedin" aria-label="分享到 Linkedin">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://7huahua.github.io/2023/01/word2vec%E7%9B%B8%E5%85%B3/" title="分享到 Linkedin" aria-label="分享到 Linkedin">
           <i class="fab fa-linkedin" aria-hidden="true"></i>
         </a>
       </li>
@@ -397,9 +404,9 @@ df.join(other.set_index('key'), on='key')
     </div>
     <script type="text/javascript">
       var disqus_config = function() {
-        this.page.url = 'https:\/\/7huahua.github.io\/2023\/01\/pandas%E5%92%8Cnumpy\/';
+        this.page.url = 'https:\/\/7huahua.github.io\/2023\/01\/word2vec%E7%9B%B8%E5%85%B3\/';
         
-          this.page.identifier = '\/2023\/01\/pandas%E5%92%8Cnumpy\/'
+          this.page.identifier = '\/2023\/01\/word2vec%E7%9B%B8%E5%85%B3\/'
         
       };
       (function() {
@@ -435,7 +442,7 @@ df.join(other.set_index('key'), on='key')
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://7huahua.github.io/2023/01/word2vec%E7%9B%B8%E5%85%B3/" data-tooltip="Word2vec相关" aria-label="下一篇: Word2vec相关">
+            <a class="post-action-btn btn btn--disabled">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
@@ -443,7 +450,7 @@ df.join(other.set_index('key'), on='key')
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://7huahua.github.io/2023/01/%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%BF%976-nodejs%E5%92%8Cpuppeteer%E5%AD%A6%E4%B9%A0/" data-tooltip="工作日志6 Nodejs和puppeteer学习" aria-label="上一篇: 工作日志6 Nodejs和puppeteer学习">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://7huahua.github.io/2023/01/pandas%E5%92%8Cnumpy/" data-tooltip="Pandas和numpy" aria-label="上一篇: Pandas和numpy">
           
               <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
               <i class="fa fa-angle-right"></i>
@@ -461,19 +468,19 @@ df.join(other.set_index('key'), on='key')
     </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://7huahua.github.io/2023/01/pandas%E5%92%8Cnumpy/" title="分享到 Facebook" aria-label="分享到 Facebook">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://7huahua.github.io/2023/01/word2vec%E7%9B%B8%E5%85%B3/" title="分享到 Facebook" aria-label="分享到 Facebook">
           <i class="fab fa-facebook-square" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://7huahua.github.io/2023/01/pandas%E5%92%8Cnumpy/" title="分享到 Twitter" aria-label="分享到 Twitter">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://7huahua.github.io/2023/01/word2vec%E7%9B%B8%E5%85%B3/" title="分享到 Twitter" aria-label="分享到 Twitter">
           <i class="fab fa-twitter" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://7huahua.github.io/2023/01/pandas%E5%92%8Cnumpy/" title="分享到 Linkedin" aria-label="分享到 Linkedin">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://7huahua.github.io/2023/01/word2vec%E7%9B%B8%E5%85%B3/" title="分享到 Linkedin" aria-label="分享到 Linkedin">
           <i class="fab fa-linkedin" aria-hidden="true"></i>
         </a>
       </li>
@@ -504,19 +511,19 @@ df.join(other.set_index('key'), on='key')
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2F7huahua.github.io%2F2023%2F01%2Fpandas%25E5%2592%258Cnumpy%2F" aria-label="分享到 Facebook">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2F7huahua.github.io%2F2023%2F01%2Fword2vec%25E7%259B%25B8%25E5%2585%25B3%2F" aria-label="分享到 Facebook">
           <i class="fab fa-facebook-square" aria-hidden="true"></i><span>分享到 Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2F7huahua.github.io%2F2023%2F01%2Fpandas%25E5%2592%258Cnumpy%2F" aria-label="分享到 Twitter">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2F7huahua.github.io%2F2023%2F01%2Fword2vec%25E7%259B%25B8%25E5%2585%25B3%2F" aria-label="分享到 Twitter">
           <i class="fab fa-twitter" aria-hidden="true"></i><span>分享到 Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2F7huahua.github.io%2F2023%2F01%2Fpandas%25E5%2592%258Cnumpy%2F" aria-label="分享到 Linkedin">
+        <a class="share-option-btn" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2F7huahua.github.io%2F2023%2F01%2Fword2vec%25E7%259B%25B8%25E5%2585%25B3%2F" aria-label="分享到 Linkedin">
           <i class="fab fa-linkedin" aria-hidden="true"></i><span>分享到 Linkedin</span>
         </a>
       </li>

@@ -7,10 +7,10 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "Pandas和numpy",
+  "headline": "工作日志5 Ruby_on_rails学习",
   
-  "datePublished": "2023-01-05T15:01:37+09:00",
-  "dateModified": "2023-01-05T15:01:37+09:00",
+  "datePublished": "2023-01-05T14:13:51+09:00",
+  "dateModified": "2023-01-05T14:13:51+09:00",
   "author": {
     "@type": "Person",
     "name": "Han Qiuhan",
@@ -20,7 +20,7 @@
   },
   "mainEntityOfPage": { 
     "@type": "WebPage",
-    "@id": "https:\/\/7huahua.github.io\/2023\/01\/pandas%E5%92%8Cnumpy\/" 
+    "@id": "https:\/\/7huahua.github.io\/2023\/01\/%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%BF%975-ruby_on_rails%E5%AD%A6%E4%B9%A0\/" 
   },
   "publisher": {
     "@type": "Organization",
@@ -32,7 +32,7 @@
     }
     
   },
-  "description": "在做实验的过程中搜了不知道多少次numpy和pandas的一些操作，总是忘记。现在记录下来。\npandas: csv-\u0026gt;df,df-\u0026gt;csv pd.read_csv('./name.csv') df.to_csv('./name.csv',header = None, index = None) numpy: array-\u0026gt;csv numpy.savetxt('./name.csv',a = numpy.asarray([[1,2,3],[4,5,6]]),delimiter = ',') pandas: string to datetime from datetime import datetime datetime_str = '09/19/22 13:55:26' datetime_object = datetime.strptime(datetime_str, '%m/%d/%y %H:%M:%S') pandas:隔行相减 df['xx_1'] = df['xx'].shift(1) df['xx']-df['xx_1'] pandas: groupby 相关 sort_values(['col_name'],ascending = False) reset_index(drop = True) set_index() pandas:选择某一列非NAN的行 selected_rows = df[~df['col_name'].isnull()] pandas:表join 默认的join是根据index，如果不想根据index就要设定key #不保留index df.set_index('key').join(other.set_index('key')) #保留index df.join(other.set_index('key'), on='key') pandas:绘制概率直方图 df.hist() pandas: 更改column name df.set_axis(['col_name1','col_name2','col_name3'], axis = 1) ",
+  "description": "这个工作内容是更改检测系统的web端，增加一个更改某个特定表的功能。主要使用ruby on rails。\nruby on rails quick start 官方入门教程rais入门\n总的来说，rails是一个web框架，最重要的三个模块是controller routes view\ncontroller控制着view的生成。\nview中使用的方法，以及view的名称，都应该在contoller中定义。\nview也就是page，包含每个页面的html文件。view下每个page的路径即为其的URL导航。这些导航也可以在routes中更改。\n总之搞不明白了就再把官方文档看一遍。\nmodel rails中类似java和python的class即为model。model之间可以有属于、包含、一对多多对多的关系。\n限定条件取得数据 参考这个连接（rbr写博客真的很详细）qiita rails 语法\nwhere model.where(colname:\u0026lsquo;value\u0026rsquo;) model.where.not(colname:\u0026lsquo;value\u0026rsquo;) model.where(colname1:\u0026lsquo;value1\u0026rsquo;).or(colname2:\u0026lsquo;value2\u0026rsquo;)\nfirst and last model.first(n) model.last(n)\nselect model.select(:colname) model.select(\u0026lsquo;colname\u0026rsquo;)\norder model.order(\u0026rsquo;name ASC\u0026rsquo;) model.order(name::desc)\nlimit model.limit(n)\nget all column names model.column_names\nruby 语法 num to str ‘ABC’ + 12.to_s get var value \u0026quot;@post_#{id}\u0026quot; eval:执行字符串代表的语句 a = nil eval('a = RUBY_RELEASE_DATE') p a #=\u0026gt; \u0026quot;2007-03-13\u0026quot; 迭代：each_with_index/each [5, 10, 15].",
   "keywords": []
 }
 
@@ -43,29 +43,85 @@
 <meta name="generator" content="Hugo 0.104.3 with theme Tranquilpeak 0.5.3-BETA">
 <meta name="author" content="Han Qiuhan">
 <meta name="keywords" content="">
-<meta name="description" content="在做实验的过程中搜了不知道多少次numpy和pandas的一些操作，总是忘记。现在记录下来。
-pandas: csv-&gt;df,df-&gt;csv pd.read_csv(&#39;./name.csv&#39;) df.to_csv(&#39;./name.csv&#39;,header = None, index = None) numpy: array-&gt;csv numpy.savetxt(&#39;./name.csv&#39;,a = numpy.asarray([[1,2,3],[4,5,6]]),delimiter = &#39;,&#39;) pandas: string to datetime from datetime import datetime datetime_str = &#39;09/19/22 13:55:26&#39; datetime_object = datetime.strptime(datetime_str, &#39;%m/%d/%y %H:%M:%S&#39;) pandas:隔行相减 df[&#39;xx_1&#39;] = df[&#39;xx&#39;].shift(1) df[&#39;xx&#39;]-df[&#39;xx_1&#39;] pandas: groupby 相关 sort_values([&#39;col_name&#39;],ascending = False) reset_index(drop = True) set_index() pandas:选择某一列非NAN的行 selected_rows = df[~df[&#39;col_name&#39;].isnull()] pandas:表join 默认的join是根据index，如果不想根据index就要设定key #不保留index df.set_index(&#39;key&#39;).join(other.set_index(&#39;key&#39;)) #保留index df.join(other.set_index(&#39;key&#39;), on=&#39;key&#39;) pandas:绘制概率直方图 df.hist() pandas: 更改column name df.set_axis([&#39;col_name1&#39;,&#39;col_name2&#39;,&#39;col_name3&#39;], axis = 1) ">
+<meta name="description" content="这个工作内容是更改检测系统的web端，增加一个更改某个特定表的功能。主要使用ruby on rails。
+ruby on rails quick start 官方入门教程rais入门
+总的来说，rails是一个web框架，最重要的三个模块是controller routes view
+controller控制着view的生成。
+view中使用的方法，以及view的名称，都应该在contoller中定义。
+view也就是page，包含每个页面的html文件。view下每个page的路径即为其的URL导航。这些导航也可以在routes中更改。
+总之搞不明白了就再把官方文档看一遍。
+model rails中类似java和python的class即为model。model之间可以有属于、包含、一对多多对多的关系。
+限定条件取得数据 参考这个连接（rbr写博客真的很详细）qiita rails 语法
+where model.where(colname:&lsquo;value&rsquo;) model.where.not(colname:&lsquo;value&rsquo;) model.where(colname1:&lsquo;value1&rsquo;).or(colname2:&lsquo;value2&rsquo;)
+first and last model.first(n) model.last(n)
+select model.select(:colname) model.select(&lsquo;colname&rsquo;)
+order model.order(&rsquo;name ASC&rsquo;) model.order(name::desc)
+limit model.limit(n)
+get all column names model.column_names
+ruby 语法 num to str ‘ABC’ &#43; 12.to_s get var value &quot;@post_#{id}&quot; eval:执行字符串代表的语句 a = nil eval(&#39;a = RUBY_RELEASE_DATE&#39;) p a #=&gt; &quot;2007-03-13&quot; 迭代：each_with_index/each [5, 10, 15].">
 
 
-<meta property="og:description" content="在做实验的过程中搜了不知道多少次numpy和pandas的一些操作，总是忘记。现在记录下来。
-pandas: csv-&gt;df,df-&gt;csv pd.read_csv(&#39;./name.csv&#39;) df.to_csv(&#39;./name.csv&#39;,header = None, index = None) numpy: array-&gt;csv numpy.savetxt(&#39;./name.csv&#39;,a = numpy.asarray([[1,2,3],[4,5,6]]),delimiter = &#39;,&#39;) pandas: string to datetime from datetime import datetime datetime_str = &#39;09/19/22 13:55:26&#39; datetime_object = datetime.strptime(datetime_str, &#39;%m/%d/%y %H:%M:%S&#39;) pandas:隔行相减 df[&#39;xx_1&#39;] = df[&#39;xx&#39;].shift(1) df[&#39;xx&#39;]-df[&#39;xx_1&#39;] pandas: groupby 相关 sort_values([&#39;col_name&#39;],ascending = False) reset_index(drop = True) set_index() pandas:选择某一列非NAN的行 selected_rows = df[~df[&#39;col_name&#39;].isnull()] pandas:表join 默认的join是根据index，如果不想根据index就要设定key #不保留index df.set_index(&#39;key&#39;).join(other.set_index(&#39;key&#39;)) #保留index df.join(other.set_index(&#39;key&#39;), on=&#39;key&#39;) pandas:绘制概率直方图 df.hist() pandas: 更改column name df.set_axis([&#39;col_name1&#39;,&#39;col_name2&#39;,&#39;col_name3&#39;], axis = 1) ">
+<meta property="og:description" content="这个工作内容是更改检测系统的web端，增加一个更改某个特定表的功能。主要使用ruby on rails。
+ruby on rails quick start 官方入门教程rais入门
+总的来说，rails是一个web框架，最重要的三个模块是controller routes view
+controller控制着view的生成。
+view中使用的方法，以及view的名称，都应该在contoller中定义。
+view也就是page，包含每个页面的html文件。view下每个page的路径即为其的URL导航。这些导航也可以在routes中更改。
+总之搞不明白了就再把官方文档看一遍。
+model rails中类似java和python的class即为model。model之间可以有属于、包含、一对多多对多的关系。
+限定条件取得数据 参考这个连接（rbr写博客真的很详细）qiita rails 语法
+where model.where(colname:&lsquo;value&rsquo;) model.where.not(colname:&lsquo;value&rsquo;) model.where(colname1:&lsquo;value1&rsquo;).or(colname2:&lsquo;value2&rsquo;)
+first and last model.first(n) model.last(n)
+select model.select(:colname) model.select(&lsquo;colname&rsquo;)
+order model.order(&rsquo;name ASC&rsquo;) model.order(name::desc)
+limit model.limit(n)
+get all column names model.column_names
+ruby 语法 num to str ‘ABC’ &#43; 12.to_s get var value &quot;@post_#{id}&quot; eval:执行字符串代表的语句 a = nil eval(&#39;a = RUBY_RELEASE_DATE&#39;) p a #=&gt; &quot;2007-03-13&quot; 迭代：each_with_index/each [5, 10, 15].">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Pandas和numpy">
-<meta name="twitter:title" content="Pandas和numpy">
-<meta property="og:url" content="https://7huahua.github.io/2023/01/pandas%E5%92%8Cnumpy/">
-<meta property="twitter:url" content="https://7huahua.github.io/2023/01/pandas%E5%92%8Cnumpy/">
+<meta property="og:title" content="工作日志5 Ruby_on_rails学习">
+<meta name="twitter:title" content="工作日志5 Ruby_on_rails学习">
+<meta property="og:url" content="https://7huahua.github.io/2023/01/%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%BF%975-ruby_on_rails%E5%AD%A6%E4%B9%A0/">
+<meta property="twitter:url" content="https://7huahua.github.io/2023/01/%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%BF%975-ruby_on_rails%E5%AD%A6%E4%B9%A0/">
 <meta property="og:site_name" content="欢迎光临 恭喜发财">
-<meta property="og:description" content="在做实验的过程中搜了不知道多少次numpy和pandas的一些操作，总是忘记。现在记录下来。
-pandas: csv-&gt;df,df-&gt;csv pd.read_csv(&#39;./name.csv&#39;) df.to_csv(&#39;./name.csv&#39;,header = None, index = None) numpy: array-&gt;csv numpy.savetxt(&#39;./name.csv&#39;,a = numpy.asarray([[1,2,3],[4,5,6]]),delimiter = &#39;,&#39;) pandas: string to datetime from datetime import datetime datetime_str = &#39;09/19/22 13:55:26&#39; datetime_object = datetime.strptime(datetime_str, &#39;%m/%d/%y %H:%M:%S&#39;) pandas:隔行相减 df[&#39;xx_1&#39;] = df[&#39;xx&#39;].shift(1) df[&#39;xx&#39;]-df[&#39;xx_1&#39;] pandas: groupby 相关 sort_values([&#39;col_name&#39;],ascending = False) reset_index(drop = True) set_index() pandas:选择某一列非NAN的行 selected_rows = df[~df[&#39;col_name&#39;].isnull()] pandas:表join 默认的join是根据index，如果不想根据index就要设定key #不保留index df.set_index(&#39;key&#39;).join(other.set_index(&#39;key&#39;)) #保留index df.join(other.set_index(&#39;key&#39;), on=&#39;key&#39;) pandas:绘制概率直方图 df.hist() pandas: 更改column name df.set_axis([&#39;col_name1&#39;,&#39;col_name2&#39;,&#39;col_name3&#39;], axis = 1) ">
-<meta name="twitter:description" content="在做实验的过程中搜了不知道多少次numpy和pandas的一些操作，总是忘记。现在记录下来。
-pandas: csv-&gt;df,df-&gt;csv pd.read_csv(&#39;./name.csv&#39;) df.to_csv(&#39;./name.csv&#39;,header = None, index = None) numpy: array-&gt;csv numpy.savetxt(&#39;./name.csv&#39;,a = numpy.asarray([[1,2,3],[4,5,6]]),delimiter = &#39;,&#39;) pandas: string to datetime from datetime import datetime datetime_str = &#39;09/19/22 13:55:26&#39; datetime_object = datetime.strptime(datetime_str, &#39;%m/%d/%y %H:%M:%S&#39;) pandas:隔行相减 df[&#39;xx_1&#39;] = df[&#39;xx&#39;].shift(1) df[&#39;xx&#39;]-df[&#39;xx_1&#39;] pandas: groupby 相关 sort_values([&#39;col_name&#39;],ascending = False) reset_index(drop = True) set_index() pandas:选择某一列非NAN的行 selected_rows = df[~df[&#39;col_name&#39;].isnull()] pandas:表join 默认的join是根据index，如果不想根据index就要设定key #不保留index df.set_index(&#39;key&#39;).join(other.set_index(&#39;key&#39;)) #保留index df.join(other.set_index(&#39;key&#39;), on=&#39;key&#39;) pandas:绘制概率直方图 df.hist() pandas: 更改column name df.set_axis([&#39;col_name1&#39;,&#39;col_name2&#39;,&#39;col_name3&#39;], axis = 1) ">
+<meta property="og:description" content="这个工作内容是更改检测系统的web端，增加一个更改某个特定表的功能。主要使用ruby on rails。
+ruby on rails quick start 官方入门教程rais入门
+总的来说，rails是一个web框架，最重要的三个模块是controller routes view
+controller控制着view的生成。
+view中使用的方法，以及view的名称，都应该在contoller中定义。
+view也就是page，包含每个页面的html文件。view下每个page的路径即为其的URL导航。这些导航也可以在routes中更改。
+总之搞不明白了就再把官方文档看一遍。
+model rails中类似java和python的class即为model。model之间可以有属于、包含、一对多多对多的关系。
+限定条件取得数据 参考这个连接（rbr写博客真的很详细）qiita rails 语法
+where model.where(colname:&lsquo;value&rsquo;) model.where.not(colname:&lsquo;value&rsquo;) model.where(colname1:&lsquo;value1&rsquo;).or(colname2:&lsquo;value2&rsquo;)
+first and last model.first(n) model.last(n)
+select model.select(:colname) model.select(&lsquo;colname&rsquo;)
+order model.order(&rsquo;name ASC&rsquo;) model.order(name::desc)
+limit model.limit(n)
+get all column names model.column_names
+ruby 语法 num to str ‘ABC’ &#43; 12.to_s get var value &quot;@post_#{id}&quot; eval:执行字符串代表的语句 a = nil eval(&#39;a = RUBY_RELEASE_DATE&#39;) p a #=&gt; &quot;2007-03-13&quot; 迭代：each_with_index/each [5, 10, 15].">
+<meta name="twitter:description" content="这个工作内容是更改检测系统的web端，增加一个更改某个特定表的功能。主要使用ruby on rails。
+ruby on rails quick start 官方入门教程rais入门
+总的来说，rails是一个web框架，最重要的三个模块是controller routes view
+controller控制着view的生成。
+view中使用的方法，以及view的名称，都应该在contoller中定义。
+view也就是page，包含每个页面的html文件。view下每个page的路径即为其的URL导航。这些导航也可以在routes中更改。
+总之搞不明白了就再把官方文档看一遍。
+model rails中类似java和python的class即为model。model之间可以有属于、包含、一对多多对多的关系。
+限定条件取得数据 参考这个连接（rbr写博客真的很详细）qiita rails 语法
+where model.where(colname:&lsquo;value&rsquo;) model.where.not(colname:&lsquo;value&rsquo;) model.where(colname1:&lsquo;value1&rsquo;).or(colname2:&lsquo;value2&rsquo;)
+first and last model.first(n) model.last(n)
+select model.select(:colname) model.select(&lsquo;colname&rsquo;)
+order model.order(&rsquo;name ASC&rsquo;) model.order(name::desc)
+limit model.limit(n)
+get all column names model.column_names
+ruby 语法 num to str ‘ABC’ &#43; 12.to_s get var value &quot;@post_#{id}&quot; eval:执行字符串代表的语句 a = nil eval(&#39;a = RUBY_RELEASE_DATE&#39;) p a #=&gt; &quot;2007-03-13&quot; 迭代：each_with_index/each [5, 10, 15].">
 <meta property="og:locale" content="zh-cn">
 
   
-    <meta property="article:published_time" content="2023-01-05T15:01:37">
+    <meta property="article:published_time" content="2023-01-05T14:13:51">
   
   
-    <meta property="article:modified_time" content="2023-01-05T15:01:37">
+    <meta property="article:modified_time" content="2023-01-05T14:13:51">
   
   
   
@@ -88,14 +144,14 @@ pandas: csv-&gt;df,df-&gt;csv pd.read_csv(&#39;./name.csv&#39;) df.to_csv(&#39;.
 
 
 
-    <title>Pandas和numpy</title>
+    <title>工作日志5 Ruby_on_rails学习</title>
 
     <link rel="icon" href="https://7huahua.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://7huahua.github.io/2023/01/pandas%E5%92%8Cnumpy/">
+    <link rel="canonical" href="https://7huahua.github.io/2023/01/%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%BF%975-ruby_on_rails%E5%AD%A6%E4%B9%A0/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -255,13 +311,13 @@ pandas: csv-&gt;df,df-&gt;csv pd.read_csv(&#39;./name.csv&#39;) df.to_csv(&#39;.
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title">
-      Pandas和numpy
+      工作日志5 Ruby_on_rails学习
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time datetime="2023-01-05T15:01:37&#43;09:00">
+      <time datetime="2023-01-05T14:13:51&#43;09:00">
         
   一月 5, 2023
 
@@ -274,43 +330,72 @@ pandas: csv-&gt;df,df-&gt;csv pd.read_csv(&#39;./name.csv&#39;) df.to_csv(&#39;.
           
           <div class="post-content markdown">
             <div class="main-content-wrap">
-              <p>在做实验的过程中搜了不知道多少次numpy和pandas的一些操作，总是忘记。现在记录下来。</p>
-<h3 id="pandas-csv-dfdf-csv">pandas: csv-&gt;df,df-&gt;csv</h3>
-<pre><code>pd.read_csv('./name.csv')
-df.to_csv('./name.csv',header = None, index = None)
+              <p>这个工作内容是更改检测系统的web端，增加一个更改某个特定表的功能。主要使用ruby on rails。</p>
+<h3 id="ruby-on-rails-quick-start">ruby on rails quick start</h3>
+<p>官方入门教程<a href="https://ruby-china.github.io/rails-guides/getting_started.html">rais入门</a></p>
+<p>总的来说，rails是一个web框架，最重要的三个模块是controller routes view</p>
+<p>controller控制着view的生成。</p>
+<p>view中使用的方法，以及view的名称，都应该在contoller中定义。</p>
+<p>view也就是page，包含每个页面的html文件。view下每个page的路径即为其的URL导航。这些导航也可以在routes中更改。</p>
+<p>总之搞不明白了就再把官方文档看一遍。</p>
+<h3 id="model">model</h3>
+<p>rails中类似java和python的class即为model。model之间可以有属于、包含、一对多多对多的关系。</p>
+<h3 id="限定条件取得数据">限定条件取得数据</h3>
+<p>参考这个连接（rbr写博客真的很详细）<a href="https://qiita.com/Hal_mai/items/babb19560ace072c99f5#%E6%8C%87%E5%AE%9A%E3%81%97%E3%81%9F%E3%82%AB%E3%83%A9%E3%83%A0%E3%81%AE%E9%85%8D%E5%88%97%E3%82%92%E5%8F%96%E5%BE%97">qiita rails 语法</a></p>
+<h4 id="where">where</h4>
+<p>model.where(colname:&lsquo;value&rsquo;)
+model.where.not(colname:&lsquo;value&rsquo;)
+model.where(colname1:&lsquo;value1&rsquo;).or(colname2:&lsquo;value2&rsquo;)</p>
+<h4 id="first-and-last">first and last</h4>
+<p>model.first(n)
+model.last(n)</p>
+<h4 id="select">select</h4>
+<p>model.select(:colname)
+model.select(&lsquo;colname&rsquo;)</p>
+<h4 id="order">order</h4>
+<p>model.order(&rsquo;name ASC&rsquo;)
+model.order(name::desc)</p>
+<h4 id="limit">limit</h4>
+<p>model.limit(n)</p>
+<h4 id="get-all-column-names">get all column names</h4>
+<p>model.column_names</p>
+<h3 id="ruby-语法">ruby 语法</h3>
+<h4 id="num-to-str">num to str</h4>
+<pre><code>‘ABC’ + 12.to_s
 </code></pre>
-<h3 id="numpy-array-csv">numpy: array-&gt;csv</h3>
-<pre><code>numpy.savetxt('./name.csv',a = numpy.asarray([[1,2,3],[4,5,6]]),delimiter = ',')
+<h4 id="get-var-value">get var value</h4>
+<pre><code>&quot;@post_#{id}&quot;
 </code></pre>
-<h3 id="pandas-string-to-datetime">pandas: string to datetime</h3>
-<pre><code>from datetime import datetime
-datetime_str = '09/19/22 13:55:26'
-datetime_object = datetime.strptime(datetime_str, '%m/%d/%y %H:%M:%S')
+<h4 id="eval执行字符串代表的语句">eval:执行字符串代表的语句</h4>
+<pre><code>a = nil
+eval('a = RUBY_RELEASE_DATE')
+p a #=&gt; &quot;2007-03-13&quot;
 </code></pre>
-<h3 id="pandas隔行相减">pandas:隔行相减</h3>
-<pre><code>df['xx_1'] = df['xx'].shift(1)
-df['xx']-df['xx_1']
+<h4 id="迭代each_with_indexeach">迭代：each_with_index/each</h4>
+<pre><code>[5, 10, 15].each_with_index do |n, idx|
+p [n, idx]
+end
+# =&gt; [5, 0]
+#    [10, 1]
+#    [15, 2]
 </code></pre>
-<h3 id="pandas-groupby-相关">pandas: groupby 相关</h3>
-<pre><code>sort_values(['col_name'],ascending = False)
-reset_index(drop = True)
-set_index()
+<h2 id="html">HTML</h2>
+<h3 id="table-中的trtable-row-thtable-head-tdtable-data">table 中的tr(table row) th(table head) td(table data)</h3>
+<pre><code>&lt;table&gt;
+&lt;tr&gt;
+    &lt;th&gt;Player Name &lt;/th&gt;              &lt;-- Each of these
+    &lt;th&gt;Position &lt;/th&gt;                      is a column header
+    &lt;th&gt;Avg. Ranking &lt;/th&gt;
+&lt;/tr&gt;
+&lt;% @players.each do |player| %&gt;
+&lt;tr&gt;
+    &lt;td&gt;&lt;%= player.name%&gt;&lt;/td&gt;         &lt;-- Each of these adds
+    &lt;td&gt;&lt;%=player.position %&gt;&lt;/td&gt;&lt;td&gt;     data to the corresponding
+    &lt;td&gt;&lt;%=player.avg_ranking %&gt;&lt;/td&gt;      column in the same row
+&lt;/tr&gt;
+&lt;% end %&gt;
+&lt;/table&gt;
 </code></pre>
-<h3 id="pandas选择某一列非nan的行">pandas:选择某一列非NAN的行</h3>
-<pre><code>selected_rows = df[~df['col_name'].isnull()]
-</code></pre>
-<h3 id="pandas表join">pandas:表join</h3>
-<pre><code>默认的join是根据index，如果不想根据index就要设定key
-#不保留index
-df.set_index('key').join(other.set_index('key'))
-#保留index
-df.join(other.set_index('key'), on='key')
-</code></pre>
-<h3 id="pandas绘制概率直方图">pandas:绘制概率直方图</h3>
-<pre><code>df.hist()
-</code></pre>
-<h3 id="pandas-更改column-name">pandas: 更改column name</h3>
-<pre><code>df.set_axis(['col_name1','col_name2','col_name3'], axis = 1)</code></pre>
 
               
 
@@ -328,7 +413,7 @@ df.join(other.set_index('key'), on='key')
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://7huahua.github.io/2023/01/word2vec%E7%9B%B8%E5%85%B3/" data-tooltip="Word2vec相关" aria-label="下一篇: Word2vec相关">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://7huahua.github.io/2023/01/%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%BF%976-nodejs%E5%92%8Cpuppeteer%E5%AD%A6%E4%B9%A0/" data-tooltip="工作日志6 Nodejs和puppeteer学习" aria-label="下一篇: 工作日志6 Nodejs和puppeteer学习">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
@@ -336,7 +421,7 @@ df.join(other.set_index('key'), on='key')
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://7huahua.github.io/2023/01/%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%BF%976-nodejs%E5%92%8Cpuppeteer%E5%AD%A6%E4%B9%A0/" data-tooltip="工作日志6 Nodejs和puppeteer学习" aria-label="上一篇: 工作日志6 Nodejs和puppeteer学习">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://7huahua.github.io/2022/11/linux-%E6%8C%87%E4%BB%A4%E5%AD%A6%E4%B9%A0/" data-tooltip="Linux 指令学习" aria-label="上一篇: Linux 指令学习">
           
               <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
               <i class="fa fa-angle-right"></i>
@@ -354,19 +439,19 @@ df.join(other.set_index('key'), on='key')
     </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://7huahua.github.io/2023/01/pandas%E5%92%8Cnumpy/" title="分享到 Facebook" aria-label="分享到 Facebook">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://7huahua.github.io/2023/01/%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%BF%975-ruby_on_rails%E5%AD%A6%E4%B9%A0/" title="分享到 Facebook" aria-label="分享到 Facebook">
           <i class="fab fa-facebook-square" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://7huahua.github.io/2023/01/pandas%E5%92%8Cnumpy/" title="分享到 Twitter" aria-label="分享到 Twitter">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://7huahua.github.io/2023/01/%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%BF%975-ruby_on_rails%E5%AD%A6%E4%B9%A0/" title="分享到 Twitter" aria-label="分享到 Twitter">
           <i class="fab fa-twitter" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://7huahua.github.io/2023/01/pandas%E5%92%8Cnumpy/" title="分享到 Linkedin" aria-label="分享到 Linkedin">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://7huahua.github.io/2023/01/%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%BF%975-ruby_on_rails%E5%AD%A6%E4%B9%A0/" title="分享到 Linkedin" aria-label="分享到 Linkedin">
           <i class="fab fa-linkedin" aria-hidden="true"></i>
         </a>
       </li>
@@ -397,9 +482,9 @@ df.join(other.set_index('key'), on='key')
     </div>
     <script type="text/javascript">
       var disqus_config = function() {
-        this.page.url = 'https:\/\/7huahua.github.io\/2023\/01\/pandas%E5%92%8Cnumpy\/';
+        this.page.url = 'https:\/\/7huahua.github.io\/2023\/01\/%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%BF%975-ruby_on_rails%E5%AD%A6%E4%B9%A0\/';
         
-          this.page.identifier = '\/2023\/01\/pandas%E5%92%8Cnumpy\/'
+          this.page.identifier = '\/2023\/01\/%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%BF%975-ruby_on_rails%E5%AD%A6%E4%B9%A0\/'
         
       };
       (function() {
@@ -435,7 +520,7 @@ df.join(other.set_index('key'), on='key')
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://7huahua.github.io/2023/01/word2vec%E7%9B%B8%E5%85%B3/" data-tooltip="Word2vec相关" aria-label="下一篇: Word2vec相关">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://7huahua.github.io/2023/01/%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%BF%976-nodejs%E5%92%8Cpuppeteer%E5%AD%A6%E4%B9%A0/" data-tooltip="工作日志6 Nodejs和puppeteer学习" aria-label="下一篇: 工作日志6 Nodejs和puppeteer学习">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
@@ -443,7 +528,7 @@ df.join(other.set_index('key'), on='key')
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://7huahua.github.io/2023/01/%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%BF%976-nodejs%E5%92%8Cpuppeteer%E5%AD%A6%E4%B9%A0/" data-tooltip="工作日志6 Nodejs和puppeteer学习" aria-label="上一篇: 工作日志6 Nodejs和puppeteer学习">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://7huahua.github.io/2022/11/linux-%E6%8C%87%E4%BB%A4%E5%AD%A6%E4%B9%A0/" data-tooltip="Linux 指令学习" aria-label="上一篇: Linux 指令学习">
           
               <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
               <i class="fa fa-angle-right"></i>
@@ -461,19 +546,19 @@ df.join(other.set_index('key'), on='key')
     </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://7huahua.github.io/2023/01/pandas%E5%92%8Cnumpy/" title="分享到 Facebook" aria-label="分享到 Facebook">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://7huahua.github.io/2023/01/%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%BF%975-ruby_on_rails%E5%AD%A6%E4%B9%A0/" title="分享到 Facebook" aria-label="分享到 Facebook">
           <i class="fab fa-facebook-square" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://7huahua.github.io/2023/01/pandas%E5%92%8Cnumpy/" title="分享到 Twitter" aria-label="分享到 Twitter">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://7huahua.github.io/2023/01/%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%BF%975-ruby_on_rails%E5%AD%A6%E4%B9%A0/" title="分享到 Twitter" aria-label="分享到 Twitter">
           <i class="fab fa-twitter" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://7huahua.github.io/2023/01/pandas%E5%92%8Cnumpy/" title="分享到 Linkedin" aria-label="分享到 Linkedin">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https://7huahua.github.io/2023/01/%E5%B7%A5%E4%BD%9C%E6%97%A5%E5%BF%975-ruby_on_rails%E5%AD%A6%E4%B9%A0/" title="分享到 Linkedin" aria-label="分享到 Linkedin">
           <i class="fab fa-linkedin" aria-hidden="true"></i>
         </a>
       </li>
@@ -504,19 +589,19 @@ df.join(other.set_index('key'), on='key')
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2F7huahua.github.io%2F2023%2F01%2Fpandas%25E5%2592%258Cnumpy%2F" aria-label="分享到 Facebook">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2F7huahua.github.io%2F2023%2F01%2F%25E5%25B7%25A5%25E4%25BD%259C%25E6%2597%25A5%25E5%25BF%25975-ruby_on_rails%25E5%25AD%25A6%25E4%25B9%25A0%2F" aria-label="分享到 Facebook">
           <i class="fab fa-facebook-square" aria-hidden="true"></i><span>分享到 Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2F7huahua.github.io%2F2023%2F01%2Fpandas%25E5%2592%258Cnumpy%2F" aria-label="分享到 Twitter">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2F7huahua.github.io%2F2023%2F01%2F%25E5%25B7%25A5%25E4%25BD%259C%25E6%2597%25A5%25E5%25BF%25975-ruby_on_rails%25E5%25AD%25A6%25E4%25B9%25A0%2F" aria-label="分享到 Twitter">
           <i class="fab fa-twitter" aria-hidden="true"></i><span>分享到 Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2F7huahua.github.io%2F2023%2F01%2Fpandas%25E5%2592%258Cnumpy%2F" aria-label="分享到 Linkedin">
+        <a class="share-option-btn" target="new" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2F7huahua.github.io%2F2023%2F01%2F%25E5%25B7%25A5%25E4%25BD%259C%25E6%2597%25A5%25E5%25BF%25975-ruby_on_rails%25E5%25AD%25A6%25E4%25B9%25A0%2F" aria-label="分享到 Linkedin">
           <i class="fab fa-linkedin" aria-hidden="true"></i><span>分享到 Linkedin</span>
         </a>
       </li>
