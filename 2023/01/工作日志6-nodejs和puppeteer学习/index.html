@@ -32,7 +32,7 @@
     }
     
   },
-  "description": "这个项目本身使用Aurora Vision提供的api进行爬虫，但Aurora Vision更新了他们的api版本，并且需要申请额外服务，因此该项目只能从网页基于puppeteer进行爬虫。\npuppeteer是一个很容易上手的爬虫库，基本看quick start就能理解其是如何模拟人的一些操作来爬虫的。该项目的难点在于我不会java，也不会js，熟悉这些花费了很久的时间。\nnode.js和puppeteer安装 先装npm，后装puppeteer，挺简单的\nnode.js的调试 console.log('this is test') 控制台输出\nnode inspect xxx.js: 内置的检查器\ncont, c: 继续执行 next, n: 下一步 step, s: 进入 out, o: 走出去 pause：暂停运行代码（如开发者工具中的暂停按钮） 参考node.js 官方文档\n在vs中设置js的debug环境vs nodejs\nyoutube视频教程Getting started with Node.js debugging in VS Code\n在vs中debug:在控制台输入noed xxx.js之后即可打开debug页面。 vs inline value: Open Settings Search for \u0026ldquo;debug\u0026rdquo; Navigate to Features \u0026gt; Debug Change the setting for Debug: Inline Values\n另外还可以使用devtool等方法。我觉得还是vs最方便。\nnode.js的一些迷惑语法 module exports: 模块化。 很多时候一个文件会被包装成一整个模块，直接对其debug是不会有反映的。要在别的test文件中导入，再逐行debug。 例如 #.",
+  "description": "这个项目本身使用Aurora Vision提供的api进行爬虫，但Aurora Vision更新了他们的api版本，并且需要申请额外服务，因此该项目只能从网页基于puppeteer进行爬虫。\npuppeteer是一个很容易上手的爬虫库，基本看quick start就能理解其是如何模拟人的一些操作来爬虫的。该项目的难点在于我不会java，也不会js，熟悉这些花费了很久的时间。\nnode.js和puppeteer安装 先装npm，后装puppeteer，挺简单的\nnode.js的调试 console.log('this is test') 控制台输出\nconsole.time('puppeteer') console.timeLog('puppeteer') console.timeEnd('puppeteer') 计算时间 node inspect xxx.js: 内置的检查器\ncont, c: 继续执行 next, n: 下一步 step, s: 进入 out, o: 走出去 pause：暂停运行代码（如开发者工具中的暂停按钮） 参考node.js 官方文档\n在vs中设置js的debug环境vs nodejs\nyoutube视频教程Getting started with Node.js debugging in VS Code\n在vs中debug:在控制台输入noed xxx.js之后即可打开debug页面。 vs inline value: Open Settings Search for \u0026ldquo;debug\u0026rdquo; Navigate to Features \u0026gt; Debug Change the setting for Debug: Inline Values\n另外还可以使用devtool等方法。我觉得还是vs最方便。\nnode.js的一些迷惑语法 module exports: 模块化。 很多时候一个文件会被包装成一整个模块，直接对其debug是不会有反映的。要在别的test文件中导入，再逐行debug。 例如 #.",
   "keywords": []
 }
 
@@ -47,7 +47,7 @@
 puppeteer是一个很容易上手的爬虫库，基本看quick start就能理解其是如何模拟人的一些操作来爬虫的。该项目的难点在于我不会java，也不会js，熟悉这些花费了很久的时间。
 node.js和puppeteer安装 先装npm，后装puppeteer，挺简单的
 node.js的调试 console.log(&#39;this is test&#39;) 控制台输出
-node inspect xxx.js: 内置的检查器
+console.time(&#39;puppeteer&#39;) console.timeLog(&#39;puppeteer&#39;) console.timeEnd(&#39;puppeteer&#39;) 计算时间 node inspect xxx.js: 内置的检查器
 cont, c: 继续执行 next, n: 下一步 step, s: 进入 out, o: 走出去 pause：暂停运行代码（如开发者工具中的暂停按钮） 参考node.js 官方文档
 在vs中设置js的debug环境vs nodejs
 youtube视频教程Getting started with Node.js debugging in VS Code
@@ -60,7 +60,7 @@ node.js的一些迷惑语法 module exports: 模块化。 很多时候一个文�
 puppeteer是一个很容易上手的爬虫库，基本看quick start就能理解其是如何模拟人的一些操作来爬虫的。该项目的难点在于我不会java，也不会js，熟悉这些花费了很久的时间。
 node.js和puppeteer安装 先装npm，后装puppeteer，挺简单的
 node.js的调试 console.log(&#39;this is test&#39;) 控制台输出
-node inspect xxx.js: 内置的检查器
+console.time(&#39;puppeteer&#39;) console.timeLog(&#39;puppeteer&#39;) console.timeEnd(&#39;puppeteer&#39;) 计算时间 node inspect xxx.js: 内置的检查器
 cont, c: 继续执行 next, n: 下一步 step, s: 进入 out, o: 走出去 pause：暂停运行代码（如开发者工具中的暂停按钮） 参考node.js 官方文档
 在vs中设置js的debug环境vs nodejs
 youtube视频教程Getting started with Node.js debugging in VS Code
@@ -77,7 +77,7 @@ node.js的一些迷惑语法 module exports: 模块化。 很多时候一个文�
 puppeteer是一个很容易上手的爬虫库，基本看quick start就能理解其是如何模拟人的一些操作来爬虫的。该项目的难点在于我不会java，也不会js，熟悉这些花费了很久的时间。
 node.js和puppeteer安装 先装npm，后装puppeteer，挺简单的
 node.js的调试 console.log(&#39;this is test&#39;) 控制台输出
-node inspect xxx.js: 内置的检查器
+console.time(&#39;puppeteer&#39;) console.timeLog(&#39;puppeteer&#39;) console.timeEnd(&#39;puppeteer&#39;) 计算时间 node inspect xxx.js: 内置的检查器
 cont, c: 继续执行 next, n: 下一步 step, s: 进入 out, o: 走出去 pause：暂停运行代码（如开发者工具中的暂停按钮） 参考node.js 官方文档
 在vs中设置js的debug环境vs nodejs
 youtube视频教程Getting started with Node.js debugging in VS Code
@@ -88,7 +88,7 @@ node.js的一些迷惑语法 module exports: 模块化。 很多时候一个文�
 puppeteer是一个很容易上手的爬虫库，基本看quick start就能理解其是如何模拟人的一些操作来爬虫的。该项目的难点在于我不会java，也不会js，熟悉这些花费了很久的时间。
 node.js和puppeteer安装 先装npm，后装puppeteer，挺简单的
 node.js的调试 console.log(&#39;this is test&#39;) 控制台输出
-node inspect xxx.js: 内置的检查器
+console.time(&#39;puppeteer&#39;) console.timeLog(&#39;puppeteer&#39;) console.timeEnd(&#39;puppeteer&#39;) 计算时间 node inspect xxx.js: 内置的检查器
 cont, c: 继续执行 next, n: 下一步 step, s: 进入 out, o: 走出去 pause：暂停运行代码（如开发者工具中的暂停按钮） 参考node.js 官方文档
 在vs中设置js的debug环境vs nodejs
 youtube视频教程Getting started with Node.js debugging in VS Code
@@ -316,6 +316,10 @@ node.js的一些迷惑语法 module exports: 模块化。 很多时候一个文�
 <p>先装npm，后装puppeteer，挺简单的</p>
 <h3 id="nodejs的调试">node.js的调试</h3>
 <p><code>console.log('this is test')</code> 控制台输出</p>
+<pre><code>console.time('puppeteer')
+console.timeLog('puppeteer')
+console.timeEnd('puppeteer') 计算时间
+</code></pre>
 <p><code>node inspect xxx.js</code>: 内置的检查器</p>
 <pre><code>cont, c: 继续执行
 
@@ -368,6 +372,8 @@ var filtered = array.filter(function(value, index, arr){
     return value &gt; 5;
 });
 </code></pre>
+<h4 id="判断数组是否为空">判断数组是否为空</h4>
+<p>没有直接的isnull这种用法。可以用!array.length判断</p>
 <h4 id="一些js表达式">一些js表达式</h4>
 <p>参考这个可以直接运行的网站<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_AND">mozilla-js</a></p>
 <h3 id="puppeteer的调试">puppeteer的调试</h3>
@@ -445,7 +451,7 @@ const arrayT = await array[0].map((_, colIndex) =&gt; array.map(row =&gt; row[co
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://7huahua.github.io/2023/01/pandas%E5%92%8Cnumpy/" data-tooltip="Pandas和numpy" aria-label="下一篇: Pandas和numpy">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://7huahua.github.io/2023/01/%E5%AE%9E%E9%AA%8C%E6%97%A5%E5%BF%971-pandas%E5%92%8Cnumpy/" data-tooltip="实验日志1 Pandas和numpy" aria-label="下一篇: 实验日志1 Pandas和numpy">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
@@ -552,7 +558,7 @@ const arrayT = await array[0].map((_, colIndex) =&gt; array.map(row =&gt; row[co
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://7huahua.github.io/2023/01/pandas%E5%92%8Cnumpy/" data-tooltip="Pandas和numpy" aria-label="下一篇: Pandas和numpy">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://7huahua.github.io/2023/01/%E5%AE%9E%E9%AA%8C%E6%97%A5%E5%BF%971-pandas%E5%92%8Cnumpy/" data-tooltip="实验日志1 Pandas和numpy" aria-label="下一篇: 实验日志1 Pandas和numpy">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>

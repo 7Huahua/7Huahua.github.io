@@ -21,15 +21,18 @@
 3月底Jorudan汇报，4月底中期答辩
 Jorudan data: 做预测，对于用户预测出行方式/对于具体地点预测比如地铁、火车人流量
 Gowalla data：是否真的可以做预测用户相似度？因为只有用户之间的连接，没有交互频率 ：使用更多图的节点相似度计算方法，提取相似节点，而不是直接使用现有的连接进行预测 ：比如对于每个节点的TOP5最近用户计算他们的相似度？
-中期答辩: 强调经典方法的好处：快速，容易解释</description>
+中期答辩: 强调经典方法的好处：快速，容易解释
+2023.1.17
+lr_scheduler:可以自动调大调小学习率
+multimask: 多方面权重的加和，比如结果= 普通余弦相似度+交互相似度+视频内的tag相似度</description>
     </item>
     
     <item>
-      <title>Word2vec相关</title>
-      <link>https://7huahua.github.io/2023/01/word2vec%E7%9B%B8%E5%85%B3/</link>
+      <title>实验日志2 Word2vec相关</title>
+      <link>https://7huahua.github.io/2023/01/%E5%AE%9E%E9%AA%8C%E6%97%A5%E5%BF%972-word2vec%E7%9B%B8%E5%85%B3/</link>
       <pubDate>Thu, 05 Jan 2023 15:49:13 +0900</pubDate>
       
-      <guid>https://7huahua.github.io/2023/01/word2vec%E7%9B%B8%E5%85%B3/</guid>
+      <guid>https://7huahua.github.io/2023/01/%E5%AE%9E%E9%AA%8C%E6%97%A5%E5%BF%972-word2vec%E7%9B%B8%E5%85%B3/</guid>
       <description>目前的实验需要word2vec进行embedding，这里记录下过程。
 安装gensim 这里的坑是gensim的版本更新很快，第一次安装可以最新版。但使用老版本存储后的model不能用新版导入，而新版的语法和老版有可能不兼容。
 pip install --upgrade gensim pip install gensim==4.0.0 导入并使用 from gensim.models import Word2Vec model = Word2Vec(sentences=cropus, vector_size=100, window=5, min_count=1, workers=4) model.save(&amp;quot;word2vec.model&amp;quot;) 获取cropus word2vec格式：list of lists
@@ -38,11 +41,11 @@ pip install --upgrade gensim pip install gensim==4.0.0 导入并使用 from gens
     </item>
     
     <item>
-      <title>Pandas和numpy</title>
-      <link>https://7huahua.github.io/2023/01/pandas%E5%92%8Cnumpy/</link>
+      <title>实验日志1 Pandas和numpy</title>
+      <link>https://7huahua.github.io/2023/01/%E5%AE%9E%E9%AA%8C%E6%97%A5%E5%BF%971-pandas%E5%92%8Cnumpy/</link>
       <pubDate>Thu, 05 Jan 2023 15:01:37 +0900</pubDate>
       
-      <guid>https://7huahua.github.io/2023/01/pandas%E5%92%8Cnumpy/</guid>
+      <guid>https://7huahua.github.io/2023/01/%E5%AE%9E%E9%AA%8C%E6%97%A5%E5%BF%971-pandas%E5%92%8Cnumpy/</guid>
       <description>在做实验的过程中搜了不知道多少次numpy和pandas的一些操作，总是忘记。现在记录下来。
 pandas: csv-&amp;gt;df,df-&amp;gt;csv pd.read_csv(&#39;./name.csv&#39;) df.to_csv(&#39;./name.csv&#39;,header = None, index = None) numpy: array-&amp;gt;csv numpy.savetxt(&#39;./name.csv&#39;,a = numpy.asarray([[1,2,3],[4,5,6]]),delimiter = &#39;,&#39;) pandas: string to datetime from datetime import datetime datetime_str = &#39;09/19/22 13:55:26&#39; datetime_object = datetime.strptime(datetime_str, &#39;%m/%d/%y %H:%M:%S&#39;) pandas:隔行相减 df[&#39;xx_1&#39;] = df[&#39;xx&#39;].shift(1) df[&#39;xx&#39;]-df[&#39;xx_1&#39;] pandas: groupby 相关 sort_values([&#39;col_name&#39;],ascending = False) reset_index(drop = True) set_index() pandas:选择某一列非NAN的行 selected_rows = df[~df[&#39;col_name&#39;].isnull()] pandas:表join 默认的join是根据index，如果不想根据index就要设定key #不保留index df.set_index(&#39;key&#39;).join(other.set_index(&#39;key&#39;)) #保留index df.join(other.set_index(&#39;key&#39;), on=&#39;key&#39;) pandas:绘制概率直方图 df.hist() pandas: 更改column name df.set_axis([&#39;col_name1&#39;,&#39;col_name2&#39;,&#39;col_name3&#39;], axis = 1) </description>
     </item>
@@ -57,7 +60,7 @@ pandas: csv-&amp;gt;df,df-&amp;gt;csv pd.read_csv(&#39;./name.csv&#39;) df.to_cs
 puppeteer是一个很容易上手的爬虫库，基本看quick start就能理解其是如何模拟人的一些操作来爬虫的。该项目的难点在于我不会java，也不会js，熟悉这些花费了很久的时间。
 node.js和puppeteer安装 先装npm，后装puppeteer，挺简单的
 node.js的调试 console.log(&#39;this is test&#39;) 控制台输出
-node inspect xxx.js: 内置的检查器
+console.time(&#39;puppeteer&#39;) console.timeLog(&#39;puppeteer&#39;) console.timeEnd(&#39;puppeteer&#39;) 计算时间 node inspect xxx.js: 内置的检查器
 cont, c: 继续执行 next, n: 下一步 step, s: 进入 out, o: 走出去 pause：暂停运行代码（如开发者工具中的暂停按钮） 参考node.js 官方文档
 在vs中设置js的debug环境vs nodejs
 youtube视频教程Getting started with Node.js debugging in VS Code
@@ -78,24 +81,25 @@ ruby on rails quick start 官方入门教程rais入门
 controller控制着view的生成。
 view中使用的方法，以及view的名称，都应该在contoller中定义。
 view也就是page，包含每个页面的html文件。view下每个page的路径即为其的URL导航。这些导航也可以在routes中更改。
+lib中可以放置一些扩展脚本，一般都是.sh文件或者.rb文件。 .rb文件的执行命令为：rails runner .rb
 总之搞不明白了就再把官方文档看一遍。
 model rails中类似java和python的class即为model。model之间可以有属于、包含、一对多多对多的关系。
+web端与db的通信 除去rails中使用model进行通信之外，还可以使用直接send SQL query的方法。 例如： sql = ActiveRecord::Base.send( :sanitize_sql_array, [amount_target_list_sql, today:today] ) logger(&amp;ldquo;amount send is ok&amp;rdquo;) # logger(sql)
+results = ActiveRecord::Base.connection.select_all(sql) logger(&#39;amount select is ok&#39;) rails在启动的时候会建立web和db的连接。手动建立新的连接可以使用 ActiveRecord::Base.establish_connection(config)
 限定条件取得数据 参考这个连接（rbr写博客真的很详细）qiita rails 语法
 where model.where(colname:&amp;lsquo;value&amp;rsquo;) model.where.not(colname:&amp;lsquo;value&amp;rsquo;) model.where(colname1:&amp;lsquo;value1&amp;rsquo;).or(colname2:&amp;lsquo;value2&amp;rsquo;)
 first and last model.first(n) model.last(n)
 select model.select(:colname) model.select(&amp;lsquo;colname&amp;rsquo;)
 order model.order(&amp;rsquo;name ASC&amp;rsquo;) model.order(name::desc)
-limit model.limit(n)
-get all column names model.column_names
-ruby 语法 num to str ‘ABC’ + 12.to_s get var value &amp;quot;@post_#{id}&amp;quot; eval:执行字符串代表的语句 a = nil eval(&#39;a = RUBY_RELEASE_DATE&#39;) p a #=&amp;gt; &amp;quot;2007-03-13&amp;quot; 迭代：each_with_index/each [5, 10, 15].</description>
+limit model.</description>
     </item>
     
     <item>
-      <title>Linux 指令学习</title>
-      <link>https://7huahua.github.io/2022/11/linux-%E6%8C%87%E4%BB%A4%E5%AD%A6%E4%B9%A0/</link>
+      <title>实验日志3 Linux 指令学习</title>
+      <link>https://7huahua.github.io/2022/11/%E5%AE%9E%E9%AA%8C%E6%97%A5%E5%BF%973-linux-%E6%8C%87%E4%BB%A4%E5%AD%A6%E4%B9%A0/</link>
       <pubDate>Wed, 02 Nov 2022 15:17:42 +0900</pubDate>
       
-      <guid>https://7huahua.github.io/2022/11/linux-%E6%8C%87%E4%BB%A4%E5%AD%A6%E4%B9%A0/</guid>
+      <guid>https://7huahua.github.io/2022/11/%E5%AE%9E%E9%AA%8C%E6%97%A5%E5%BF%973-linux-%E6%8C%87%E4%BB%A4%E5%AD%A6%E4%B9%A0/</guid>
       <description>Linux 指令学习 最近实习终于派给我了可以学到东西的活，在sxp的鼓励下开始学习指令。再次谢谢她！
 密钥登陆 ssh -i [privatekey] username@ip_address 使用ssh密钥登陆
 密钥上传下载 scp -i [privatekey] -r username@ip_address:remote_dictionary ./local_dictionary/ 使用ssh复制文件夹到本地
@@ -141,7 +145,7 @@ $?: Expands to the exit status of the most recently executed foreground pipeline
 问题3：github大小写识别问题 git改为可识别大小写 git config --get core.ignorecase git config core.ignorecase false github用户名在setting-account里直接改为小写 问题4：branch导致push不显示 据说这是由于github默认分支从master 改为main的缘故。那我已经push到master了，需要重命名。 参考: rename master to main
 Markdown教程：菜鸟教程Markdown
 Hugo快速入门：quick start
-搭建好之后新增加一篇博客 hugo new posts/xxx.md
+搭建好之后新增加一篇博客 在blog文件夹下：hugo new posts/xxx.md
 编辑xxx.md内容
 在blog文件夹下:hugo server -D, 进入local host：1313预览</description>
     </item>

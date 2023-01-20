@@ -288,6 +288,9 @@
 Jorudan data: 做预测，对于用户预测出行方式/对于具体地点预测比如地铁、火车人流量
 Gowalla data：是否真的可以做预测用户相似度？因为只有用户之间的连接，没有交互频率 ：使用更多图的节点相似度计算方法，提取相似节点，而不是直接使用现有的连接进行预测 ：比如对于每个节点的TOP5最近用户计算他们的相似度？
 中期答辩: 强调经典方法的好处：快速，容易解释
+2023.1.17
+lr_scheduler:可以自动调大调小学习率
+multimask: 多方面权重的加和，比如结果= 普通余弦相似度+交互相似度+视频内的tag相似度
       
       <p>
         
@@ -319,9 +322,9 @@ Gowalla data：是否真的可以做预测用户相似度？因为只有用户�
     <div class="postShorten-header">
       <h1 class="postShorten-title">
       
-        <a class="link-unstyled" href="https://7huahua.github.io/2023/01/word2vec%E7%9B%B8%E5%85%B3/" aria-label="打开帖子: Word2vec相关">
+        <a class="link-unstyled" href="https://7huahua.github.io/2023/01/%E5%AE%9E%E9%AA%8C%E6%97%A5%E5%BF%972-word2vec%E7%9B%B8%E5%85%B3/" aria-label="打开帖子: 实验日志2 Word2vec相关">
       
-          Word2vec相关
+          实验日志2 Word2vec相关
         </a>
       </h1>
       
@@ -347,7 +350,7 @@ pip install --upgrade gensim pip install gensim==4.0.0 导入并使用 from gens
       
       <p>
         
-          <a href="https://7huahua.github.io/2023/01/word2vec%E7%9B%B8%E5%85%B3/" class="postShorten-excerpt_link link" aria-label="打开帖子: Word2vec相关">阅读全文</a>
+          <a href="https://7huahua.github.io/2023/01/%E5%AE%9E%E9%AA%8C%E6%97%A5%E5%BF%972-word2vec%E7%9B%B8%E5%85%B3/" class="postShorten-excerpt_link link" aria-label="打开帖子: 实验日志2 Word2vec相关">阅读全文</a>
         
         
       </p>
@@ -375,9 +378,9 @@ pip install --upgrade gensim pip install gensim==4.0.0 导入并使用 from gens
     <div class="postShorten-header">
       <h1 class="postShorten-title">
       
-        <a class="link-unstyled" href="https://7huahua.github.io/2023/01/pandas%E5%92%8Cnumpy/" aria-label="打开帖子: Pandas和numpy">
+        <a class="link-unstyled" href="https://7huahua.github.io/2023/01/%E5%AE%9E%E9%AA%8C%E6%97%A5%E5%BF%971-pandas%E5%92%8Cnumpy/" aria-label="打开帖子: 实验日志1 Pandas和numpy">
       
-          Pandas和numpy
+          实验日志1 Pandas和numpy
         </a>
       </h1>
       
@@ -400,7 +403,7 @@ pandas: csv-&gt;df,df-&gt;csv pd.read_csv('./name.csv') df.to_csv('./name.csv',h
       
       <p>
         
-          <a href="https://7huahua.github.io/2023/01/pandas%E5%92%8Cnumpy/" class="postShorten-excerpt_link link" aria-label="打开帖子: Pandas和numpy">阅读全文</a>
+          <a href="https://7huahua.github.io/2023/01/%E5%AE%9E%E9%AA%8C%E6%97%A5%E5%BF%971-pandas%E5%92%8Cnumpy/" class="postShorten-excerpt_link link" aria-label="打开帖子: 实验日志1 Pandas和numpy">阅读全文</a>
         
         
       </p>
@@ -452,7 +455,7 @@ pandas: csv-&gt;df,df-&gt;csv pd.read_csv('./name.csv') df.to_csv('./name.csv',h
 puppeteer是一个很容易上手的爬虫库，基本看quick start就能理解其是如何模拟人的一些操作来爬虫的。该项目的难点在于我不会java，也不会js，熟悉这些花费了很久的时间。
 node.js和puppeteer安装 先装npm，后装puppeteer，挺简单的
 node.js的调试 console.log('this is test') 控制台输出
-node inspect xxx.js: 内置的检查器
+console.time('puppeteer') console.timeLog('puppeteer') console.timeEnd('puppeteer') 计算时间 node inspect xxx.js: 内置的检查器
 cont, c: 继续执行 next, n: 下一步 step, s: 进入 out, o: 走出去 pause：暂停运行代码（如开发者工具中的暂停按钮） 参考node.js 官方文档
 在vs中设置js的debug环境vs nodejs
 youtube视频教程Getting started with Node.js debugging in VS Code
@@ -516,16 +519,17 @@ ruby on rails quick start 官方入门教程rais入门
 controller控制着view的生成。
 view中使用的方法，以及view的名称，都应该在contoller中定义。
 view也就是page，包含每个页面的html文件。view下每个page的路径即为其的URL导航。这些导航也可以在routes中更改。
+lib中可以放置一些扩展脚本，一般都是.sh文件或者.rb文件。 .rb文件的执行命令为：rails runner .rb
 总之搞不明白了就再把官方文档看一遍。
 model rails中类似java和python的class即为model。model之间可以有属于、包含、一对多多对多的关系。
+web端与db的通信 除去rails中使用model进行通信之外，还可以使用直接send SQL query的方法。 例如： sql = ActiveRecord::Base.send( :sanitize_sql_array, [amount_target_list_sql, today:today] ) logger(&ldquo;amount send is ok&rdquo;) # logger(sql)
+results = ActiveRecord::Base.connection.select_all(sql) logger('amount select is ok') rails在启动的时候会建立web和db的连接。手动建立新的连接可以使用 ActiveRecord::Base.establish_connection(config)
 限定条件取得数据 参考这个连接（rbr写博客真的很详细）qiita rails 语法
 where model.where(colname:&lsquo;value&rsquo;) model.where.not(colname:&lsquo;value&rsquo;) model.where(colname1:&lsquo;value1&rsquo;).or(colname2:&lsquo;value2&rsquo;)
 first and last model.first(n) model.last(n)
 select model.select(:colname) model.select(&lsquo;colname&rsquo;)
 order model.order(&rsquo;name ASC&rsquo;) model.order(name::desc)
-limit model.limit(n)
-get all column names model.column_names
-ruby 语法 num to str ‘ABC’ + 12.to_s get var value &quot;@post_#{id}&quot; eval:执行字符串代表的语句 a = nil eval('a = RUBY_RELEASE_DATE') p a #=&gt; &quot;2007-03-13&quot; 迭代：each_with_index/each [5, 10, 15].
+limit model.
       
       <p>
         
@@ -557,9 +561,9 @@ ruby 语法 num to str ‘ABC’ + 12.to_s get var value &quot;@post_#{id}&quot;
     <div class="postShorten-header">
       <h1 class="postShorten-title">
       
-        <a class="link-unstyled" href="https://7huahua.github.io/2022/11/linux-%E6%8C%87%E4%BB%A4%E5%AD%A6%E4%B9%A0/" aria-label="打开帖子: Linux 指令学习">
+        <a class="link-unstyled" href="https://7huahua.github.io/2022/11/%E5%AE%9E%E9%AA%8C%E6%97%A5%E5%BF%973-linux-%E6%8C%87%E4%BB%A4%E5%AD%A6%E4%B9%A0/" aria-label="打开帖子: 实验日志3 Linux 指令学习">
       
-          Linux 指令学习
+          实验日志3 Linux 指令学习
         </a>
       </h1>
       
@@ -607,7 +611,7 @@ $?: Expands to the exit status of the most recently executed foreground pipeline
       
       <p>
         
-          <a href="https://7huahua.github.io/2022/11/linux-%E6%8C%87%E4%BB%A4%E5%AD%A6%E4%B9%A0/" class="postShorten-excerpt_link link" aria-label="打开帖子: Linux 指令学习">阅读全文</a>
+          <a href="https://7huahua.github.io/2022/11/%E5%AE%9E%E9%AA%8C%E6%97%A5%E5%BF%973-linux-%E6%8C%87%E4%BB%A4%E5%AD%A6%E4%B9%A0/" class="postShorten-excerpt_link link" aria-label="打开帖子: 实验日志3 Linux 指令学习">阅读全文</a>
         
         
       </p>
@@ -665,7 +669,7 @@ $?: Expands to the exit status of the most recently executed foreground pipeline
 问题3：github大小写识别问题 git改为可识别大小写 git config --get core.ignorecase git config core.ignorecase false github用户名在setting-account里直接改为小写 问题4：branch导致push不显示 据说这是由于github默认分支从master 改为main的缘故。那我已经push到master了，需要重命名。 参考: rename master to main
 Markdown教程：菜鸟教程Markdown
 Hugo快速入门：quick start
-搭建好之后新增加一篇博客 hugo new posts/xxx.md
+搭建好之后新增加一篇博客 在blog文件夹下：hugo new posts/xxx.md
 编辑xxx.md内容
 在blog文件夹下:hugo server -D, 进入local host：1313预览
       

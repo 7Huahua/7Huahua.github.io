@@ -32,7 +32,7 @@
     }
     
   },
-  "description": "这个工作内容是更改检测系统的web端，增加一个更改某个特定表的功能。主要使用ruby on rails。\nruby on rails quick start 官方入门教程rais入门\n总的来说，rails是一个web框架，最重要的三个模块是controller routes view\ncontroller控制着view的生成。\nview中使用的方法，以及view的名称，都应该在contoller中定义。\nview也就是page，包含每个页面的html文件。view下每个page的路径即为其的URL导航。这些导航也可以在routes中更改。\n总之搞不明白了就再把官方文档看一遍。\nmodel rails中类似java和python的class即为model。model之间可以有属于、包含、一对多多对多的关系。\n限定条件取得数据 参考这个连接（rbr写博客真的很详细）qiita rails 语法\nwhere model.where(colname:\u0026lsquo;value\u0026rsquo;) model.where.not(colname:\u0026lsquo;value\u0026rsquo;) model.where(colname1:\u0026lsquo;value1\u0026rsquo;).or(colname2:\u0026lsquo;value2\u0026rsquo;)\nfirst and last model.first(n) model.last(n)\nselect model.select(:colname) model.select(\u0026lsquo;colname\u0026rsquo;)\norder model.order(\u0026rsquo;name ASC\u0026rsquo;) model.order(name::desc)\nlimit model.limit(n)\nget all column names model.column_names\nruby 语法 num to str ‘ABC’ + 12.to_s get var value \u0026quot;@post_#{id}\u0026quot; eval:执行字符串代表的语句 a = nil eval('a = RUBY_RELEASE_DATE') p a #=\u0026gt; \u0026quot;2007-03-13\u0026quot; 迭代：each_with_index/each [5, 10, 15].",
+  "description": "这个工作内容是更改检测系统的web端，增加一个更改某个特定表的功能。主要使用ruby on rails。\nruby on rails quick start 官方入门教程rais入门\n总的来说，rails是一个web框架，最重要的三个模块是controller routes view\ncontroller控制着view的生成。\nview中使用的方法，以及view的名称，都应该在contoller中定义。\nview也就是page，包含每个页面的html文件。view下每个page的路径即为其的URL导航。这些导航也可以在routes中更改。\nlib中可以放置一些扩展脚本，一般都是.sh文件或者.rb文件。 .rb文件的执行命令为：rails runner .rb\n总之搞不明白了就再把官方文档看一遍。\nmodel rails中类似java和python的class即为model。model之间可以有属于、包含、一对多多对多的关系。\nweb端与db的通信 除去rails中使用model进行通信之外，还可以使用直接send SQL query的方法。 例如： sql = ActiveRecord::Base.send( :sanitize_sql_array, [amount_target_list_sql, today:today] ) logger(\u0026ldquo;amount send is ok\u0026rdquo;) # logger(sql)\nresults = ActiveRecord::Base.connection.select_all(sql) logger('amount select is ok') rails在启动的时候会建立web和db的连接。手动建立新的连接可以使用 ActiveRecord::Base.establish_connection(config)\n限定条件取得数据 参考这个连接（rbr写博客真的很详细）qiita rails 语法\nwhere model.where(colname:\u0026lsquo;value\u0026rsquo;) model.where.not(colname:\u0026lsquo;value\u0026rsquo;) model.where(colname1:\u0026lsquo;value1\u0026rsquo;).or(colname2:\u0026lsquo;value2\u0026rsquo;)\nfirst and last model.first(n) model.last(n)\nselect model.select(:colname) model.select(\u0026lsquo;colname\u0026rsquo;)\norder model.order(\u0026rsquo;name ASC\u0026rsquo;) model.order(name::desc)\nlimit model.",
   "keywords": []
 }
 
@@ -49,16 +49,17 @@ ruby on rails quick start 官方入门教程rais入门
 controller控制着view的生成。
 view中使用的方法，以及view的名称，都应该在contoller中定义。
 view也就是page，包含每个页面的html文件。view下每个page的路径即为其的URL导航。这些导航也可以在routes中更改。
+lib中可以放置一些扩展脚本，一般都是.sh文件或者.rb文件。 .rb文件的执行命令为：rails runner .rb
 总之搞不明白了就再把官方文档看一遍。
 model rails中类似java和python的class即为model。model之间可以有属于、包含、一对多多对多的关系。
+web端与db的通信 除去rails中使用model进行通信之外，还可以使用直接send SQL query的方法。 例如： sql = ActiveRecord::Base.send( :sanitize_sql_array, [amount_target_list_sql, today:today] ) logger(&ldquo;amount send is ok&rdquo;) # logger(sql)
+results = ActiveRecord::Base.connection.select_all(sql) logger(&#39;amount select is ok&#39;) rails在启动的时候会建立web和db的连接。手动建立新的连接可以使用 ActiveRecord::Base.establish_connection(config)
 限定条件取得数据 参考这个连接（rbr写博客真的很详细）qiita rails 语法
 where model.where(colname:&lsquo;value&rsquo;) model.where.not(colname:&lsquo;value&rsquo;) model.where(colname1:&lsquo;value1&rsquo;).or(colname2:&lsquo;value2&rsquo;)
 first and last model.first(n) model.last(n)
 select model.select(:colname) model.select(&lsquo;colname&rsquo;)
 order model.order(&rsquo;name ASC&rsquo;) model.order(name::desc)
-limit model.limit(n)
-get all column names model.column_names
-ruby 语法 num to str ‘ABC’ &#43; 12.to_s get var value &quot;@post_#{id}&quot; eval:执行字符串代表的语句 a = nil eval(&#39;a = RUBY_RELEASE_DATE&#39;) p a #=&gt; &quot;2007-03-13&quot; 迭代：each_with_index/each [5, 10, 15].">
+limit model.">
 
 
 <meta property="og:description" content="这个工作内容是更改检测系统的web端，增加一个更改某个特定表的功能。主要使用ruby on rails。
@@ -67,16 +68,17 @@ ruby on rails quick start 官方入门教程rais入门
 controller控制着view的生成。
 view中使用的方法，以及view的名称，都应该在contoller中定义。
 view也就是page，包含每个页面的html文件。view下每个page的路径即为其的URL导航。这些导航也可以在routes中更改。
+lib中可以放置一些扩展脚本，一般都是.sh文件或者.rb文件。 .rb文件的执行命令为：rails runner .rb
 总之搞不明白了就再把官方文档看一遍。
 model rails中类似java和python的class即为model。model之间可以有属于、包含、一对多多对多的关系。
+web端与db的通信 除去rails中使用model进行通信之外，还可以使用直接send SQL query的方法。 例如： sql = ActiveRecord::Base.send( :sanitize_sql_array, [amount_target_list_sql, today:today] ) logger(&ldquo;amount send is ok&rdquo;) # logger(sql)
+results = ActiveRecord::Base.connection.select_all(sql) logger(&#39;amount select is ok&#39;) rails在启动的时候会建立web和db的连接。手动建立新的连接可以使用 ActiveRecord::Base.establish_connection(config)
 限定条件取得数据 参考这个连接（rbr写博客真的很详细）qiita rails 语法
 where model.where(colname:&lsquo;value&rsquo;) model.where.not(colname:&lsquo;value&rsquo;) model.where(colname1:&lsquo;value1&rsquo;).or(colname2:&lsquo;value2&rsquo;)
 first and last model.first(n) model.last(n)
 select model.select(:colname) model.select(&lsquo;colname&rsquo;)
 order model.order(&rsquo;name ASC&rsquo;) model.order(name::desc)
-limit model.limit(n)
-get all column names model.column_names
-ruby 语法 num to str ‘ABC’ &#43; 12.to_s get var value &quot;@post_#{id}&quot; eval:执行字符串代表的语句 a = nil eval(&#39;a = RUBY_RELEASE_DATE&#39;) p a #=&gt; &quot;2007-03-13&quot; 迭代：each_with_index/each [5, 10, 15].">
+limit model.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="工作日志5 Ruby_on_rails学习">
 <meta name="twitter:title" content="工作日志5 Ruby_on_rails学习">
@@ -89,32 +91,34 @@ ruby on rails quick start 官方入门教程rais入门
 controller控制着view的生成。
 view中使用的方法，以及view的名称，都应该在contoller中定义。
 view也就是page，包含每个页面的html文件。view下每个page的路径即为其的URL导航。这些导航也可以在routes中更改。
+lib中可以放置一些扩展脚本，一般都是.sh文件或者.rb文件。 .rb文件的执行命令为：rails runner .rb
 总之搞不明白了就再把官方文档看一遍。
 model rails中类似java和python的class即为model。model之间可以有属于、包含、一对多多对多的关系。
+web端与db的通信 除去rails中使用model进行通信之外，还可以使用直接send SQL query的方法。 例如： sql = ActiveRecord::Base.send( :sanitize_sql_array, [amount_target_list_sql, today:today] ) logger(&ldquo;amount send is ok&rdquo;) # logger(sql)
+results = ActiveRecord::Base.connection.select_all(sql) logger(&#39;amount select is ok&#39;) rails在启动的时候会建立web和db的连接。手动建立新的连接可以使用 ActiveRecord::Base.establish_connection(config)
 限定条件取得数据 参考这个连接（rbr写博客真的很详细）qiita rails 语法
 where model.where(colname:&lsquo;value&rsquo;) model.where.not(colname:&lsquo;value&rsquo;) model.where(colname1:&lsquo;value1&rsquo;).or(colname2:&lsquo;value2&rsquo;)
 first and last model.first(n) model.last(n)
 select model.select(:colname) model.select(&lsquo;colname&rsquo;)
 order model.order(&rsquo;name ASC&rsquo;) model.order(name::desc)
-limit model.limit(n)
-get all column names model.column_names
-ruby 语法 num to str ‘ABC’ &#43; 12.to_s get var value &quot;@post_#{id}&quot; eval:执行字符串代表的语句 a = nil eval(&#39;a = RUBY_RELEASE_DATE&#39;) p a #=&gt; &quot;2007-03-13&quot; 迭代：each_with_index/each [5, 10, 15].">
+limit model.">
 <meta name="twitter:description" content="这个工作内容是更改检测系统的web端，增加一个更改某个特定表的功能。主要使用ruby on rails。
 ruby on rails quick start 官方入门教程rais入门
 总的来说，rails是一个web框架，最重要的三个模块是controller routes view
 controller控制着view的生成。
 view中使用的方法，以及view的名称，都应该在contoller中定义。
 view也就是page，包含每个页面的html文件。view下每个page的路径即为其的URL导航。这些导航也可以在routes中更改。
+lib中可以放置一些扩展脚本，一般都是.sh文件或者.rb文件。 .rb文件的执行命令为：rails runner .rb
 总之搞不明白了就再把官方文档看一遍。
 model rails中类似java和python的class即为model。model之间可以有属于、包含、一对多多对多的关系。
+web端与db的通信 除去rails中使用model进行通信之外，还可以使用直接send SQL query的方法。 例如： sql = ActiveRecord::Base.send( :sanitize_sql_array, [amount_target_list_sql, today:today] ) logger(&ldquo;amount send is ok&rdquo;) # logger(sql)
+results = ActiveRecord::Base.connection.select_all(sql) logger(&#39;amount select is ok&#39;) rails在启动的时候会建立web和db的连接。手动建立新的连接可以使用 ActiveRecord::Base.establish_connection(config)
 限定条件取得数据 参考这个连接（rbr写博客真的很详细）qiita rails 语法
 where model.where(colname:&lsquo;value&rsquo;) model.where.not(colname:&lsquo;value&rsquo;) model.where(colname1:&lsquo;value1&rsquo;).or(colname2:&lsquo;value2&rsquo;)
 first and last model.first(n) model.last(n)
 select model.select(:colname) model.select(&lsquo;colname&rsquo;)
 order model.order(&rsquo;name ASC&rsquo;) model.order(name::desc)
-limit model.limit(n)
-get all column names model.column_names
-ruby 语法 num to str ‘ABC’ &#43; 12.to_s get var value &quot;@post_#{id}&quot; eval:执行字符串代表的语句 a = nil eval(&#39;a = RUBY_RELEASE_DATE&#39;) p a #=&gt; &quot;2007-03-13&quot; 迭代：each_with_index/each [5, 10, 15].">
+limit model.">
 <meta property="og:locale" content="zh-cn">
 
   
@@ -337,9 +341,25 @@ ruby 语法 num to str ‘ABC’ &#43; 12.to_s get var value &quot;@post_#{id}&q
 <p>controller控制着view的生成。</p>
 <p>view中使用的方法，以及view的名称，都应该在contoller中定义。</p>
 <p>view也就是page，包含每个页面的html文件。view下每个page的路径即为其的URL导航。这些导航也可以在routes中更改。</p>
+<p>lib中可以放置一些扩展脚本，一般都是.sh文件或者.rb文件。
+.rb文件的执行命令为：rails runner .rb</p>
 <p>总之搞不明白了就再把官方文档看一遍。</p>
 <h3 id="model">model</h3>
 <p>rails中类似java和python的class即为model。model之间可以有属于、包含、一对多多对多的关系。</p>
+<h3 id="web端与db的通信">web端与db的通信</h3>
+<p>除去rails中使用model进行通信之外，还可以使用直接send SQL query的方法。
+例如：
+sql = ActiveRecord::Base.send(
+:sanitize_sql_array,
+[amount_target_list_sql, today:today]
+)
+logger(&ldquo;amount send is ok&rdquo;)
+# logger(sql)</p>
+<pre><code>results = ActiveRecord::Base.connection.select_all(sql)
+logger('amount select is ok')
+</code></pre>
+<p>rails在启动的时候会建立web和db的连接。手动建立新的连接可以使用
+ActiveRecord::Base.establish_connection(config)</p>
 <h3 id="限定条件取得数据">限定条件取得数据</h3>
 <p>参考这个连接（rbr写博客真的很详细）<a href="https://qiita.com/Hal_mai/items/babb19560ace072c99f5#%E6%8C%87%E5%AE%9A%E3%81%97%E3%81%9F%E3%82%AB%E3%83%A9%E3%83%A0%E3%81%AE%E9%85%8D%E5%88%97%E3%82%92%E5%8F%96%E5%BE%97">qiita rails 语法</a></p>
 <h4 id="where">where</h4>
@@ -379,6 +399,9 @@ end
 #    [10, 1]
 #    [15, 2]
 </code></pre>
+<h3 id="ruby和rails的交互式命令行">ruby和rails的交互式命令行</h3>
+<p>ruby: <code>irb</code>
+rails: <code>rails c</code></p>
 <h2 id="html">HTML</h2>
 <h3 id="table-中的trtable-row-thtable-head-tdtable-data">table 中的tr(table row) th(table head) td(table data)</h3>
 <pre><code>&lt;table&gt;
@@ -421,7 +444,7 @@ end
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://7huahua.github.io/2022/11/linux-%E6%8C%87%E4%BB%A4%E5%AD%A6%E4%B9%A0/" data-tooltip="Linux 指令学习" aria-label="上一篇: Linux 指令学习">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://7huahua.github.io/2022/11/%E5%AE%9E%E9%AA%8C%E6%97%A5%E5%BF%973-linux-%E6%8C%87%E4%BB%A4%E5%AD%A6%E4%B9%A0/" data-tooltip="实验日志3 Linux 指令学习" aria-label="上一篇: 实验日志3 Linux 指令学习">
           
               <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
               <i class="fa fa-angle-right"></i>
@@ -528,7 +551,7 @@ end
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://7huahua.github.io/2022/11/linux-%E6%8C%87%E4%BB%A4%E5%AD%A6%E4%B9%A0/" data-tooltip="Linux 指令学习" aria-label="上一篇: Linux 指令学习">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://7huahua.github.io/2022/11/%E5%AE%9E%E9%AA%8C%E6%97%A5%E5%BF%973-linux-%E6%8C%87%E4%BB%A4%E5%AD%A6%E4%B9%A0/" data-tooltip="实验日志3 Linux 指令学习" aria-label="上一篇: 实验日志3 Linux 指令学习">
           
               <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
               <i class="fa fa-angle-right"></i>
